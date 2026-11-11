@@ -81,6 +81,16 @@ main > section[aria-labelledby="hero-h"]:first-child,
 .pill-heading { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; }
 .pill-heading > span { font-size: .875rem; }
 </style>
+<style>
+.menu-toggle, .mobile-program { display: none !important; }
+@media (max-width: 760px) {
+  .menu-toggle { display: inline-grid !important; place-items: center; margin-left: auto; width: 44px; height: 44px; border: 1px solid #D9E3E7; border-radius: 6px; background: #fff; color: #004B59; cursor: pointer; }
+  header .desktop-program, header .nav { display: none !important; }
+  header .menu-toggle[aria-expanded="true"] + .nav { display: flex !important; flex-direction: column; align-items: stretch !important; margin: 0 !important; padding: .5rem 0 1rem; }
+  header .nav .mobile-program { display: inline-flex !important; align-self: flex-start; margin-top: .5rem; }
+  header .service-panel { position: static; width: 100%; max-width: none; box-shadow: none; }
+}
+</style>
 </head>
 <body>
 <div style="font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 17px; line-height: 1.6; color: #111111; background: #FFFFFF; -webkit-font-smoothing: antialiased">
@@ -97,7 +107,8 @@ main > section[aria-labelledby="hero-h"]:first-child,
   <header style="background: #FFFFFF; border-bottom: 1px solid #D9E3E7">
     <div class="wrap hdr" style="max-width: 85rem; margin: 0 auto; padding: 0 40px; height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 32px">
       <a href="index.html" style="display: block; flex: none"><img src="assets/logo-teal.png" alt="SmaBio Labs — home" style="display: block; height: 40px; width: auto"></a>
-      <nav class="nav" aria-label="Primary" style="display: flex; align-items: center; gap: 36px; margin-left: auto; font-size: 15px; font-weight: 500">
+      <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      <nav id="primary-navigation" class="nav" aria-label="Primary" style="display: flex; align-items: center; gap: 36px; margin-left: auto; font-size: 15px; font-weight: 500">
         <a class="nl" href="about.html" style="display: inline-flex; align-items: center; height: 44px; border-bottom: 2px solid transparent; color: #111111; text-decoration: none">About Us</a>
         <details class="service-menu"><summary class="nl">Services<svg class="service-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="service-panel"><a class="service-link" href="product-development.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6m-5 0v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3M8 15h8"/></svg><span>Product Development</span></a>
 <a class="service-link" href="analytical-small-molecules.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 10l7-4m-7 8l7 4 M8 12a3 3 0 1 0-6 0 3 3 0 0 0 6 0 M21 5a3 3 0 1 0-6 0 3 3 0 0 0 6 0 M21 19a3 3 0 1 0-6 0 3 3 0 0 0 6 0"/></svg><span>Analytical Services - Small Molecules</span></a>
@@ -106,8 +117,9 @@ main > section[aria-labelledby="hero-h"]:first-child,
 <a class="service-link" href="services.html#custom-synthesis"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9zM8 10l4-2 4 2"/></svg><span>Custom Synthesis</span></a><a class="service-link" href="services.html">All Services</a></div></details>
         <a class="nl" href="blogs.html" style="display: inline-flex; align-items: center; height: 44px; border-bottom: 2px solid transparent; color: #111111; text-decoration: none">Resources</a>
       <a class="nl" href="quality-and-facilities.html" style="display: inline-flex; align-items: center; height: 44px; border-bottom: 2px solid transparent; color: #111111; text-decoration: none">Quality and Facility</a>
+      <a class="btn-p mobile-program" href="contact.html" aria-current="page" style="display: inline-flex; align-items: center; flex: none; height: 44px; padding: 0 20px; border-radius: 6px; background: #004964; color: #FFFFFF; font-size: 15px; font-weight: 600; text-decoration: none">Choose a program</a>
       </nav>
-      <a class="btn-p" href="contact.html" aria-current="page" style="display: inline-flex; align-items: center; flex: none; height: 44px; padding: 0 20px; border-radius: 6px; background: #004964; color: #FFFFFF; font-size: 15px; font-weight: 600; text-decoration: none">Choose a program</a>
+      <a class="btn-p desktop-program" href="contact.html" aria-current="page" style="display: inline-flex; align-items: center; flex: none; height: 44px; padding: 0 20px; border-radius: 6px; background: #004964; color: #FFFFFF; font-size: 15px; font-weight: 600; text-decoration: none">Choose a program</a>
     </div>
   </header>
 
@@ -215,5 +227,25 @@ main > section[aria-labelledby="hero-h"]:first-child,
 
 </div>
 <script>document.addEventListener('submit',function(e){e.preventDefault();});</script>
+<script>
+{
+  const toggle = document.querySelector('.menu-toggle');
+  const nav = document.getElementById('primary-navigation');
+  function setMenu(open) {
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  toggle.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') === 'false'));
+  toggle.closest('header').addEventListener('keydown', event => {
+    if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+      setMenu(false);
+      toggle.focus();
+    }
+  });
+  nav.addEventListener('click', event => {
+    if (event.target.closest('a')) setMenu(false);
+  });
+}
+</script>
 </body>
 </html>
