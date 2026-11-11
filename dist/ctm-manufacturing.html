@@ -74,6 +74,12 @@ main > section[aria-labelledby="hero-h"]:first-child,
   padding-top: 4rem !important;
 }
 </style>
+<style>
+.content-pill { display: inline-block; margin: 0; padding: 5px 12px; border-radius: 999px; background: #E9F4F5; color: #004B59; font-size: 13px; font-weight: 600; line-height: 1.4; }
+.content-pill + :is(div, h1, h2) { margin-top: 12px !important; }
+.pill-heading { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; }
+.pill-heading > span { font-size: .875rem; }
+</style>
 </head>
 <body>
 <div style="font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 17px; line-height: 1.6; color: #111111; background: #FFFFFF; -webkit-font-smoothing: antialiased">
@@ -175,7 +181,7 @@ main > section[aria-labelledby="hero-h"]:first-child,
     <!-- §01 Sterile phases -->
     <section id="sterile-phases" class="sec" aria-labelledby="s01-h" style="padding: 112px 0">
       <div class="wrap" style="max-width: 85rem; margin: 0 auto; padding: 0 40px">
-        <div style="display: flex; justify-content: space-between; gap: 24px; padding-top: 16px; border-top: 1px solid #D9E3E7; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #004B59"><span>§01 — Sterile · Phase-appropriate</span><span class="hide-m" style="color: rgba(0,47,60,0.78)">Preclinical → Phase I → Phase II</span></div>
+        <p class="content-pill">Sterile · Phase-appropriate</p>
         <div class="g" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 40px; row-gap: 24px; align-items: end; margin: 40px 0 56px">
           <h2 id="s01-h" class="h2" style="grid-column: span 8; margin: 0; font-size: 44px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em; color: #111111">Phase Appropriate Support for <span style="color: #004B59">Different Development Phases</span></h2>
         </div>
@@ -221,7 +227,7 @@ main > section[aria-labelledby="hero-h"]:first-child,
     <!-- §02 Sterile capabilities -->
     <section class="sec" aria-labelledby="s02-h" style="padding: 112px 0; background: #FAFAFA; border-top: 1px solid #D9E3E7">
       <div class="wrap" style="max-width: 85rem; margin: 0 auto; padding: 0 40px">
-        <div style="display: flex; justify-content: space-between; gap: 24px; padding-top: 16px; border-top: 1px solid #D9E3E7; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #004B59"><span>§02 — Sterile capabilities</span><span class="hide-m" style="color: rgba(0,47,60,0.78)">04 groups</span></div>
+        <p class="content-pill">Sterile capabilities</p>
         <div class="g" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 40px; row-gap: 40px; margin-top: 40px; align-items: start">
 
           <nav class="sticky" aria-label="On this page" style="grid-column: span 3; position: sticky; top: 32px">
@@ -283,7 +289,7 @@ main > section[aria-labelledby="hero-h"]:first-child,
     <!-- §03 Non-sterile -->
     <section id="nonsterile" class="sec" aria-labelledby="s03-h" style="padding: 112px 0">
       <div class="wrap" style="max-width: 85rem; margin: 0 auto; padding: 0 40px">
-        <div style="display: flex; justify-content: space-between; gap: 24px; padding-top: 16px; border-top: 1px solid #D9E3E7; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #004B59"><span>§03 — Non-sterile · Phase-appropriate</span><span class="hide-m" style="color: rgba(0,47,60,0.78)">Preclinical → Phase I → Phase II</span></div>
+        <p class="content-pill">Non-sterile · Phase-appropriate</p>
         <div class="g" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 40px; row-gap: 24px; align-items: end; margin: 40px 0 56px">
           <h2 id="s03-h" class="h2" style="grid-column: span 7; margin: 0; font-size: 44px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em; color: #111111">CTM Manufacturing for <span style="color: #004B59">Non-sterile Products</span></h2>
           <p style="grid-column: 9 / span 4; margin: 0; font-size: 17px; line-height: 1.6; color: #404040">Flexible and scalable solutions for a wide range of dosage forms, ensuring quality, consistency, and regulatory compliance.</p>
@@ -346,7 +352,7 @@ main > section[aria-labelledby="hero-h"]:first-child,
   <div style="background: linear-gradient(306deg, #002F3C 0%, #004B59 100%); color: #FFFFFF">
     <section id="contact" class="sec" aria-labelledby="contact-h" style="padding: 112px 0">
       <div class="wrap" style="max-width: 85rem; margin: 0 auto; padding: 0 40px">
-        <div style="display: flex; justify-content: space-between; gap: 24px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.18); font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #00D1DA"><span>— Contact Us</span><span class="hide-m" style="color: rgba(255,255,255,0.72)">Research Triangle Park, NC</span></div>
+        <p class="content-pill">Contact Us</p>
         <div class="g" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 40px; row-gap: 48px; margin-top: 48px">
           <div style="grid-column: span 5">
             <h2 id="contact-h" class="h2" style="margin: 0; font-size: 44px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em; color: #FFFFFF">Let's Move Your Program Forward</h2>

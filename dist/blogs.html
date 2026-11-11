@@ -71,6 +71,12 @@ main > section[aria-labelledby="hero-h"]:first-child,
 [data-category][hidden] { display: none !important; }
 </style>
 <style>[aria-label="Proof points"] .cell { border: 0 !important; }</style>
+<style>
+.content-pill { display: inline-block; margin: 0; padding: 5px 12px; border-radius: 999px; background: #E9F4F5; color: #004B59; font-size: 13px; font-weight: 600; line-height: 1.4; }
+.content-pill + :is(div, h1, h2) { margin-top: 12px !important; }
+.pill-heading { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; }
+.pill-heading > span { font-size: .875rem; }
+</style>
 </head>
 <body>
 <div style="font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 17px; line-height: 1.6; color: #111111; background: #FFFFFF; -webkit-font-smoothing: antialiased">
@@ -141,7 +147,7 @@ main > section[aria-labelledby="hero-h"]:first-child,
     <!-- Posts -->
     <section class="sec" aria-labelledby="posts-h" style="padding: 2rem 0 112px">
       <div class="wrap" style="max-width: 85rem; margin: 0 auto; padding: 0 40px">
-        <div style="display: flex; justify-content: space-between; gap: 24px; padding-top: 16px; border-top: 1px solid #D9E3E7; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #004B59"><h2 id="posts-h" style="margin: 0; font-size: 12px; font-weight: 500; letter-spacing: 0.08em">All Posts</h2><span id="resource-count" role="status" style="color: rgba(0,47,60,0.78)">09 posts</span></div>
+        <div class="pill-heading"><h2 id="posts-h" class="content-pill">All Posts</h2><span id="resource-count" role="status">09 posts</span></div>
 
         <p id="resource-empty" hidden>No resources in this category yet.</p><div class="g t2" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 40px; border-top: 1px solid #111111">
 
@@ -228,7 +234,7 @@ main > section[aria-labelledby="hero-h"]:first-child,
   <div style="background: linear-gradient(306deg, #002F3C 0%, #004B59 100%); color: #FFFFFF">
     <section class="sec" aria-labelledby="nl-h" style="padding: 112px 0 96px">
       <div class="wrap" style="max-width: 85rem; margin: 0 auto; padding: 0 40px">
-        <div style="display: flex; justify-content: space-between; gap: 24px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.18); font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #00D1DA"><span>— Newsletter</span><span class="hide-m" style="color: rgba(255,255,255,0.72)">Weekly</span></div>
+        <p class="content-pill">Newsletter</p>
         <div class="g" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 40px; row-gap: 40px; margin-top: 48px; align-items: end">
           <div style="grid-column: span 6">
             <h2 id="nl-h" class="h2" style="margin: 0; font-size: 44px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em; color: #FFFFFF">Subscribe to our weekly newsletter</h2>

@@ -75,6 +75,12 @@ main > section[aria-labelledby="hero-h"]:first-child,
 }
 </style>
 <style>[aria-label="Proof points"] .cell { border: 0 !important; }</style>
+<style>
+.content-pill { display: inline-block; margin: 0; padding: 5px 12px; border-radius: 999px; background: #E9F4F5; color: #004B59; font-size: 13px; font-weight: 600; line-height: 1.4; }
+.content-pill + :is(div, h1, h2) { margin-top: 12px !important; }
+.pill-heading { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; }
+.pill-heading > span { font-size: .875rem; }
+</style>
 </head>
 <body>
 <div style="font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 17px; line-height: 1.6; color: #111111; background: #FFFFFF; -webkit-font-smoothing: antialiased">
@@ -141,7 +147,7 @@ main > section[aria-labelledby="hero-h"]:first-child,
     <!-- §01 Company overview -->
     <section class="sec" aria-labelledby="s01-h" style="padding: 96px 0 112px">
       <div class="wrap" style="max-width: 85rem; margin: 0 auto; padding: 0 40px">
-        <div style="display: flex; justify-content: space-between; gap: 24px; padding-top: 16px; border-top: 1px solid #D9E3E7; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #004B59"><span>§01 — Company Overview</span><span class="hide-m" style="color: rgba(0,47,60,0.78)">Research Triangle Park, NC</span></div>
+        <p class="content-pill">Company Overview</p>
         <div class="g t1" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 40px; row-gap: 48px; margin-top: 40px; align-items: start">
           <figure style="grid-column: span 6; position: relative; margin: 0; padding: 12px; border: 1px solid #D9E3E7; background: #FFFFFF">
             <span aria-hidden="true" style="position: absolute; top: -1px; left: -1px; width: 16px; height: 16px; border-top: 2px solid #00B4D7; border-left: 2px solid #00B4D7"></span>
@@ -164,7 +170,7 @@ main > section[aria-labelledby="hero-h"]:first-child,
     <!-- §02 Timeline -->
     <section class="sec" aria-labelledby="s02-h" style="padding: 112px 0; background: #FAFAFA; border-top: 1px solid #D9E3E7">
       <div class="wrap" style="max-width: 85rem; margin: 0 auto; padding: 0 40px">
-        <div style="display: flex; justify-content: space-between; gap: 24px; padding-top: 16px; border-top: 1px solid #D9E3E7; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #004B59"><span>§02 — Facility timeline</span><span class="hide-m" style="color: rgba(0,47,60,0.78)">2023 — 2026</span></div>
+        <p class="content-pill">Facility timeline</p>
         <h2 id="s02-h" class="h2" style="margin: 40px 0 72px; font-size: 44px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em; color: #111111">From Apex to <span style="color: #004B59">Research Triangle Park</span></h2>
         <ol class="g t2" style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr))">
           <li class="cell" style="position: relative; padding: 40px 32px 0 0; border-top: 1px solid #004B59">
@@ -206,7 +212,7 @@ main > section[aria-labelledby="hero-h"]:first-child,
     <!-- §03 Values + Mission -->
     <section class="sec" aria-labelledby="s03-h" style="padding: 112px 0">
       <div class="wrap" style="max-width: 85rem; margin: 0 auto; padding: 0 40px">
-        <div style="display: flex; justify-content: space-between; gap: 24px; padding-top: 16px; border-top: 1px solid #D9E3E7; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #004B59"><span>§03 — Our values · Our Mission</span><span class="hide-m" style="color: rgba(0,47,60,0.78)">Quality · Process · Compliance</span></div>
+        <p class="content-pill">Our values · Our Mission</p>
         <div class="g" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 40px">
           <div class="cell" style="padding: 0 48px 0 0">
             <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(0,47,60,0.78)">Our values</p>
@@ -234,7 +240,7 @@ main > section[aria-labelledby="hero-h"]:first-child,
     <!-- §04 Leadership -->
     <section class="sec" aria-labelledby="s04-h" style="padding: 112px 0; background: #FAFAFA; border-top: 1px solid #D9E3E7">
       <div class="wrap" style="max-width: 85rem; margin: 0 auto; padding: 0 40px">
-        <div style="display: flex; justify-content: space-between; gap: 24px; padding-top: 16px; border-top: 1px solid #D9E3E7; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #004B59"><span>§04 — Our Team</span><span class="hide-m" style="color: rgba(0,47,60,0.78)">04 leaders</span></div>
+        <p class="content-pill">Our Team</p>
         <div class="g" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 40px; row-gap: 24px; align-items: end; margin: 40px 0 56px">
           <h2 id="s04-h" class="h2" style="grid-column: span 7; margin: 0; font-size: 44px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em; color: #111111">Meet Our Leadership</h2>
           <p style="grid-column: 9 / span 4; margin: 0; font-size: 17px; line-height: 1.6; color: #404040">Meet the quality and scientific leaders guiding SmaBio Labs, with deep expertise across quality assurance, product development, analytical services and manufacturing</p>
@@ -282,7 +288,7 @@ main > section[aria-labelledby="hero-h"]:first-child,
   <div style="background: linear-gradient(306deg, #002F3C 0%, #004B59 100%); color: #FFFFFF">
     <section id="contact" class="sec" aria-labelledby="contact-h" style="padding: 112px 0">
       <div class="wrap" style="max-width: 85rem; margin: 0 auto; padding: 0 40px">
-        <div style="display: flex; justify-content: space-between; gap: 24px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.18); font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #00D1DA"><span>— Contact Us</span><span class="hide-m" style="color: rgba(255,255,255,0.72)">Research Triangle Park, NC</span></div>
+        <p class="content-pill">Contact Us</p>
         <div class="g" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 40px; row-gap: 48px; margin-top: 48px">
           <div style="grid-column: span 5">
             <h2 id="contact-h" class="h2" style="margin: 0; font-size: 44px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em; color: #FFFFFF">Let's Move Your Program Forward</h2>
