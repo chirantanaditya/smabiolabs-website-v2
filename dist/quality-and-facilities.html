@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quality and Facility | SmaBio Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+*,*::before,*::after{box-sizing:border-box}
+a{color:#004B59}
+a:hover{color:#004964}
+::selection{background:rgba(0,180,215,0.22)}
+.btn-p{transition:background-color .15s ease,box-shadow .15s ease}
+.btn-p:hover{background:#004B59 !important;color:#FFFFFF !important;box-shadow:inset 0 -3px 0 #00B4D7}
+.btn-o:hover{background:rgba(0,75,89,0.06) !important;color:#004B59 !important}
+.btn-c:hover{background:#00D1DA !important;color:#002F3C !important}
+.nl:hover,.tab:hover{color:#004B59 !important;border-bottom-color:#00B4D7 !important}
+.tl:hover{color:#004964 !important;text-decoration-color:#004B59 !important}
+.row,.row-m{transition:background-color .15s ease}
+.row:hover{background:#FAFAFA !important}
+.row-m:hover{background:#FFFFFF !important}
+.row:hover .arr,.row-m:hover .arr,.arr:hover{background:#004964 !important;border-color:#004964 !important;color:#FFFFFF !important}
+.ctl:hover{background:#004964 !important;border-color:#004964 !important;color:#FFFFFF !important}
+.toc:hover{color:#004B59 !important;background:#FAFAFA}
+.fl:hover{color:#FFFFFF !important;text-decoration:underline;text-decoration-color:#00B4D7;text-underline-offset:4px}
+.fld:focus{outline:none;border-color:#004B59 !important;box-shadow:0 0 0 3px rgba(0,180,215,0.25)}
+.fld-d:focus{outline:none;border-color:#00D1DA !important;box-shadow:0 0 0 3px rgba(0,209,218,0.25)}
+a:focus-visible,button:focus-visible{outline:2px solid #00B4D7;outline-offset:2px}
+@media (max-width:1080px){
+.t1{grid-template-columns:minmax(0,1fr) !important}
+.t1>*{grid-column:auto !important}
+.t2{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+.t2>*{grid-column:auto !important}
+.nav{gap:20px !important}
+}
+@media (max-width:760px){
+.wrap{padding-left:20px !important;padding-right:20px !important}
+.sec{padding-top:64px !important;padding-bottom:64px !important}
+.g,.t2{grid-template-columns:minmax(0,1fr) !important}
+.g>*,.t2>*{grid-column:auto !important}
+.m2{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+.cell{border-left:0 !important;padding-left:0 !important;padding-right:0 !important;border-top:1px solid #D9E3E7}
+.h1{font-size:40px !important;line-height:1.1 !important}
+.h2{font-size:30px !important}
+.quote{font-size:22px !important}
+.num{font-size:44px !important}
+.hide-m{display:none !important}
+.hdr{flex-wrap:wrap;height:auto !important;padding-top:12px !important;padding-bottom:4px !important;row-gap:4px !important}
+.nav{order:3;width:100%;flex-wrap:wrap;gap:0 20px !important;font-size:14px !important}
+.tabs{flex-wrap:wrap;column-gap:20px !important}
+.ind{margin-left:0 !important}
+.photo{height:240px !important}
+.sticky{position:static !important}
+.stack{flex-direction:column;align-items:flex-start !important}
+.pad{padding:24px !important}
+}
+</style>
+<style>
+.service-menu { position: relative; color: #111111; }
+.service-menu summary::-webkit-details-marker { display: none; }
+.service-menu[open] .service-chevron { transform: rotate(180deg); }
+.service-menu summary { display: inline-flex; align-items: center; gap: 6px; list-style: none; cursor: pointer; line-height: 44px; white-space: nowrap; }
+.service-panel { position: absolute; z-index: 20; top: 100%; left: 0; width: max-content; max-width: min(320px, 84vw); background: #fff; border: 1px solid #D9E3E7; border-radius: 6px; box-shadow: 0 8px 24px #004B591a; }
+.service-link { display: flex; align-items: center; gap: 12px; padding: 12px 16px; color: #004B59; text-decoration: none; }
+.service-link svg { flex: none; }
+.service-link:hover, .service-link:focus-visible { background: #EDF6F8; text-decoration: underline; }
+@media (max-width: 700px) { .service-panel { position: static; } }
+</style>
+<style>
+.quality-page > .wrap {
+  max-width: 85rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 3vw, 2.5rem);
+}
+.quality-page .pagehead { padding-block: 4rem 2rem; }
+.quality-page .crumb { font-size: .875rem; color: #004B59; }
+.quality-page h1 {
+  margin: 1rem 0;
+  font-size: clamp(2rem, 4.5vw, 3.75rem);
+  line-height: 1.1;
+  max-width: 24ch;
+}
+.quality-page p { max-width: 70ch; margin: 0 0 1rem; line-height: 1.65; }
+.quality-page .reading .section {
+  border-top: 1px solid #D9E3E7;
+  padding-block: 1.75rem;
+}
+.quality-page h2 { margin: 0 0 .75rem; line-height: 1.2; }
+.quality-page .next-step {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 2rem 3.5rem;
+}
+.quality-page .next-step .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  min-height: 44px;
+  padding: .5rem 1.25rem;
+  border-radius: 6px;
+  background: #004964;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+.quality-page img { max-width: 100%; height: auto; }
+</style>
+<style>
+main > section[aria-labelledby="hero-h"]:first-child,
+.quality-page > .pagehead:first-child {
+  padding-top: 4rem !important;
+}
+</style>
+<style>
+.quality-page .pagehead {
+  padding-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+.quality-page .crumb {
+  display: inline-block;
+  padding: .35rem .8rem;
+  border-radius: 999px;
+  background: #E9F4F5;
+  font-weight: 600;
+}
+.quality-page .pagehead p { color: #404040; font-size: 1.125rem; }
+.quality-page .reading {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.quality-page .reading .section {
+  border: 1px solid #D9E3E7;
+  border-top: 3px solid #00B4D7;
+  border-radius: .5rem;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  background: #FAFCFC;
+}
+.quality-page .reading h2 { color: #004B59; }
+.quality-page .reading p:last-child { margin-bottom: 0; }
+.quality-page .quality-contact { padding-block: 2rem 4rem; }
+.quality-page .next-step {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(12rem, 20rem);
+  gap: clamp(1rem, 3vw, 2.5rem);
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  background: #E9F4F5;
+  border-radius: .5rem;
+}
+.quality-page .next-step img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: .375rem;
+}
+@media (max-width: 760px) {
+  .quality-page .reading, .quality-page .next-step { grid-template-columns: 1fr; }
+  .quality-page .next-step img { max-width: 20rem; }
+}
+</style>
+</head>
+<body>
+<div style="font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 17px; line-height: 1.6; color: #111111; background: #FFFFFF; -webkit-font-smoothing: antialiased">
+
+  <!-- Utility bar -->
+  <div style="background: #FAFAFA; border-bottom: 1px solid #D9E3E7; font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1; color: #404040">
+    <div class="wrap" style="max-width: 85rem; margin: 0 auto; padding: 0 40px; height: 36px; display: flex; align-items: center; justify-content: space-between; gap: 24px">
+      <p style="margin: 0; display: flex; align-items: center; gap: 10px; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis"><span aria-hidden="true" style="width: 6px; height: 6px; flex: none; background: #00B4D7"></span>FDA-registered analytical lab · Research Triangle Park, NC</p>
+      <p class="hide-m" style="margin: 0; display: flex; gap: 24px; white-space: nowrap"><a href="tel:+19197045617" style="color: #404040; text-decoration: none">+1 (919) 704-5617</a><a href="mailto:contact@smabiolabs.com" style="color: #404040; text-decoration: none">contact@smabiolabs.com</a></p>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header style="background: #FFFFFF; border-bottom: 1px solid #D9E3E7">
+    <div class="wrap hdr" style="max-width: 85rem; margin: 0 auto; padding: 0 40px; height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 32px">
+      <a href="index.html" style="display: block; flex: none"><img src="assets/logo-teal.png" alt="SmaBio Labs — home" style="display: block; height: 40px; width: auto"></a>
+      <nav class="nav" aria-label="Primary" style="display: flex; align-items: center; gap: 36px; margin-left: auto; font-size: 15px; font-weight: 500">
+        <a class="nl" href="about.html" style="display: inline-flex; align-items: center; height: 44px; border-bottom: 2px solid #00B4D7; color: #004B59; font-weight: 600; text-decoration: none">About Us</a>
+        <details class="service-menu"><summary class="nl">Services<svg class="service-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="service-panel"><a class="service-link" href="product-development.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6m-5 0v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3M8 15h8"/></svg><span>Product Development</span></a>
+<a class="service-link" href="analytical-small-molecules.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 10l7-4m-7 8l7 4 M8 12a3 3 0 1 0-6 0 3 3 0 0 0 6 0 M21 5a3 3 0 1 0-6 0 3 3 0 0 0 6 0 M21 19a3 3 0 1 0-6 0 3 3 0 0 0 6 0"/></svg><span>Analytical Services - Small Molecules</span></a>
+<a class="service-link" href="analytical-biologics.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3c0 9 12 9 12 18M18 3c0 9-12 9-12 18M7 6h10M7 18h10"/></svg><span>Analytical Services - Biologics</span></a>
+<a class="service-link" href="stability.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4zM4 9h16M8 14h3"/></svg><span>Stability Storage and Testing</span></a>
+<a class="service-link" href="services.html#custom-synthesis"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9zM8 10l4-2 4 2"/></svg><span>Custom Synthesis</span></a><a class="service-link" href="services.html">All Services</a></div></details>
+        <a class="nl" href="blogs.html" style="display: inline-flex; align-items: center; height: 44px; border-bottom: 2px solid transparent; color: #111111; text-decoration: none">Resources</a>
+      <a class="nl" href="quality-and-facilities.html" aria-current="page" style="display: inline-flex; align-items: center; height: 44px; border-bottom: 2px solid #00B4D7; color: #004B59; font-weight: 600; text-decoration: none">Quality and Facility</a>
+      </nav>
+      <a class="btn-p" href="contact.html" style="display: inline-flex; align-items: center; flex: none; height: 44px; padding: 0 20px; border-radius: 6px; background: #004964; color: #FFFFFF; font-size: 15px; font-weight: 600; text-decoration: none">Choose a program</a>
+    </div>
+  </header>
+
+  <main id="main" class="quality-page"><div class="wrap pagehead"><div class="crumb"><a href="index.html" class="">Home</a> / Quality &amp; Facilities</div><h1>Quality and facilities in Research Triangle Park</h1><p>If you are qualifying SmaBio for a program, start with the work you want the site to perform. A team sending analytical samples will need different records from a team planning a sterile manufacturing batch.</p>
+</div><div class="wrap reading"><section class="section" id="analytical-laboratory"><h2>Analytical laboratory</h2><p>SmaBio’s analytical laboratory in Research Triangle Park, North Carolina, is FDA-registered. If registration is part of your qualification review, ask for the details applicable to the laboratory and the testing you intend to place there.</p>
+</section><section class="section" id="manufacturing-rooms-and-equipment"><h2>Manufacturing rooms and equipment</h2><p>The site has ISO 7 and ISO 8 cleanrooms, ISO 5 biosafety cabinets, segregated manufacturing rooms and isolators for handling potent materials. Discuss your product and process with the team to identify which equipment applies to your batch.</p>
+<p>Fume hoods and laminar-flow hoods serve different handling needs. Potent-material isolators, segregated rooms and a monitored warehouse also form part of the facility review. Identify the specific room, containment system and material flow proposed for your operation before assessing fit.</p>
+</section><section class="section" id="storage-for-stability-studies"><h2>Storage for stability studies</h2><p>Storage options include controlled temperature and humidity, refrigeration and frozen storage down to −80 °C. Review the available conditions alongside the tests required by your protocol.</p>
+<p><a href="stability.html" class="">View stability storage conditions →</a></p>
+</section><section class="section" id="request-qualification-information"><h2>Request qualification information</h2><p>Tell us which activity your team is assessing and which documents you need to review. For example, specify whether your request concerns a test method, a manufacturing room or a storage condition.</p>
+
+</section></div><div class="wrap quality-contact"><section class="next-step" aria-labelledby="next-heading"><div class="next-copy"><h2 id="next-heading">Qualifying the site for a program?</h2><p>Identify the activity you are reviewing and the facility or quality documentation your team needs.</p><a class="btn" href="contact.html">Discuss Your Program<span class="arrow" aria-hidden="true">→</span></a></div><img src="assets/photo-scientists.jpg" alt="" loading="lazy"></section></div></main>
+
+  <!-- Contact band + footer (brand gradient, once) -->
+  <div style="background: linear-gradient(306deg, #002F3C 0%, #004B59 100%); color: #FFFFFF">
+    <section id="contact" class="sec" aria-labelledby="contact-h" style="padding: 112px 0">
+      <div class="wrap" style="max-width: 85rem; margin: 0 auto; padding: 0 40px">
+        <div style="display: flex; justify-content: space-between; gap: 24px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.18); font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #00D1DA"><span>— Contact Us</span><span class="hide-m" style="color: rgba(255,255,255,0.72)">Research Triangle Park, NC</span></div>
+        <div class="g" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 40px; row-gap: 48px; margin-top: 48px">
+          <div style="grid-column: span 5">
+            <h2 id="contact-h" class="h2" style="margin: 0; font-size: 44px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em; color: #FFFFFF">Let's Move Your Program Forward</h2>
+            <p style="margin: 24px 0 0; font-size: 20px; line-height: 1.5; color: #FFFFFF">Get in touch with our team of expert scientists</p>
+            <p style="margin: 12px 0 0; font-size: 17px; line-height: 1.6; color: rgba(255,255,255,0.78)">Tell us about your program, your milestones, and your timeline.</p>
+            <dl style="margin: 48px 0 0; border-top: 1px solid rgba(255,255,255,0.18)">
+              <div style="display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.18)"><dt style="padding-top: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #00D1DA">Phone</dt><dd style="margin: 0; font-size: 17px"><a href="tel:+19197045617" style="color: #FFFFFF; text-decoration: none">+1 (919) 704-5617</a></dd></div>
+              <div style="display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.18)"><dt style="padding-top: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #00D1DA">Email</dt><dd style="margin: 0; font-size: 17px"><a href="mailto:contact@smabiolabs.com" style="color: #FFFFFF; text-decoration: none">contact@smabiolabs.com</a></dd></div>
+              <div style="display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.18)"><dt style="padding-top: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #00D1DA">Address</dt><dd style="margin: 0; font-size: 17px; line-height: 1.5; color: #FFFFFF">104 T.W. Alexander Drive, Building 18, Durham, NC 27713, United States</dd></div>
+            </dl>
+          </div>
+          <div style="grid-column: 7 / span 6">
+            <form class="pad" aria-label="Contact form" style="padding: 40px; border-radius: 10px; background: #FFFFFF; color: #111111">
+              <div style="display: flex; justify-content: space-between; gap: 16px; margin-bottom: 28px; padding-bottom: 16px; border-bottom: 1px solid #D9E3E7; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #004B59"><span>Contact form</span><span style="color: rgba(0,47,60,0.78)">* Required</span></div>
+              <div class="g" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 24px; align-items: end">
+                <div><label for="f-first" style="display: block; margin-bottom: 8px; font-size: 14px; line-height: 1.4; font-weight: 600; color: #111111">First name*</label><input class="fld" id="f-first" name="first_name" type="text" autocomplete="given-name" required="required" style="width: 100%; height: 48px; padding: 0 14px; border: 1px solid #D9E3E7; border-radius: 6px; background: #FFFFFF; color: #111111; font: inherit; font-size: 16px"></div>
+                <div><label for="f-last" style="display: block; margin-bottom: 8px; font-size: 14px; line-height: 1.4; font-weight: 600; color: #111111">Last name*</label><input class="fld" id="f-last" name="last_name" type="text" autocomplete="family-name" required="required" style="width: 100%; height: 48px; padding: 0 14px; border: 1px solid #D9E3E7; border-radius: 6px; background: #FFFFFF; color: #111111; font: inherit; font-size: 16px"></div>
+                <div><label for="f-email" style="display: block; margin-bottom: 8px; font-size: 14px; line-height: 1.4; font-weight: 600; color: #111111">Email*</label><input class="fld" id="f-email" name="email" type="email" autocomplete="email" required="required" style="width: 100%; height: 48px; padding: 0 14px; border: 1px solid #D9E3E7; border-radius: 6px; background: #FFFFFF; color: #111111; font: inherit; font-size: 16px"></div>
+                <div><label for="f-company" style="display: block; margin-bottom: 8px; font-size: 14px; line-height: 1.4; font-weight: 600; color: #111111">Company*</label><input class="fld" id="f-company" name="company" type="text" autocomplete="organization" required="required" style="width: 100%; height: 48px; padding: 0 14px; border: 1px solid #D9E3E7; border-radius: 6px; background: #FFFFFF; color: #111111; font: inherit; font-size: 16px"></div>
+                <div><label for="f-phone" style="display: block; margin-bottom: 8px; font-size: 14px; line-height: 1.4; font-weight: 600; color: #111111">Phone*</label><input class="fld" id="f-phone" name="phone" type="tel" autocomplete="tel" required="required" style="width: 100%; height: 48px; padding: 0 14px; border: 1px solid #D9E3E7; border-radius: 6px; background: #FFFFFF; color: #111111; font: inherit; font-size: 16px"></div>
+                <div><label for="f-country" style="display: block; margin-bottom: 8px; font-size: 14px; line-height: 1.4; font-weight: 600; color: #111111">Country*</label><input class="fld" id="f-country" name="country" type="text" autocomplete="country-name" required="required" style="width: 100%; height: 48px; padding: 0 14px; border: 1px solid #D9E3E7; border-radius: 6px; background: #FFFFFF; color: #111111; font: inherit; font-size: 16px"></div>
+                <div><label for="f-help" style="display: block; margin-bottom: 8px; font-size: 14px; line-height: 1.4; font-weight: 600; color: #111111">How can we help you?*</label><div style="position: relative"><select class="fld" id="f-help" name="help" required="required" style="width: 100%; height: 48px; padding: 0 40px 0 14px; border: 1px solid #D9E3E7; border-radius: 6px; background: #FFFFFF; color: #111111; font: inherit; font-size: 16px; appearance: none; -webkit-appearance: none"><option value="">Select…</option><option>Analytical Services</option><option>Product Development</option><option>Drug Discovery &amp; Process Development</option><option>Stability Storage &amp; Testing</option><option>CTM Manufacturing</option><option>Custom Synthesis</option></select><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#004B59" stroke-width="1.5" aria-hidden="true" style="position: absolute; top: 16px; right: 14px; pointer-events: none"><path d="M4 6l4 4 4-4"></path></svg></div></div>
+                <div><label for="f-area" style="display: block; margin-bottom: 8px; font-size: 14px; line-height: 1.4; font-weight: 600; color: #111111">What is the primary area of interest?*</label><div style="position: relative"><select class="fld" id="f-area" name="area" required="required" style="width: 100%; height: 48px; padding: 0 40px 0 14px; border: 1px solid #D9E3E7; border-radius: 6px; background: #FFFFFF; color: #111111; font: inherit; font-size: 16px; appearance: none; -webkit-appearance: none"><option value="">Select…</option><option>Analytical Services</option><option>Product Development</option><option>Drug Discovery &amp; Process Development</option><option>Stability Storage &amp; Testing</option><option>CTM Manufacturing</option><option>Custom Synthesis</option></select><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#004B59" stroke-width="1.5" aria-hidden="true" style="position: absolute; top: 16px; right: 14px; pointer-events: none"><path d="M4 6l4 4 4-4"></path></svg></div></div>
+                <div style="grid-column: 1 / -1"><label for="f-discuss" style="display: block; margin-bottom: 8px; font-size: 14px; line-height: 1.4; font-weight: 600; color: #111111">What would you like to discuss?*</label><div style="position: relative"><select class="fld" id="f-discuss" name="discuss" required="required" style="width: 100%; height: 48px; padding: 0 40px 0 14px; border: 1px solid #D9E3E7; border-radius: 6px; background: #FFFFFF; color: #111111; font: inherit; font-size: 16px; appearance: none; -webkit-appearance: none"><option value="">Select…</option></select><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#004B59" stroke-width="1.5" aria-hidden="true" style="position: absolute; top: 16px; right: 14px; pointer-events: none"><path d="M4 6l4 4 4-4"></path></svg></div></div>
+                <div style="grid-column: 1 / -1"><label for="f-detail" style="display: block; margin-bottom: 8px; font-size: 14px; line-height: 1.4; font-weight: 600; color: #111111">Provide as much detail as possible about your challenge.*</label><textarea class="fld" id="f-detail" name="detail" rows="5" required="required" style="display: block; width: 100%; height: 136px; padding: 12px 14px; border: 1px solid #D9E3E7; border-radius: 6px; background: #FFFFFF; color: #111111; font: inherit; font-size: 16px; line-height: 1.5; resize: vertical"></textarea></div>
+              </div>
+              <div class="stack" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 28px; padding-top: 24px; border-top: 1px solid #D9E3E7">
+                <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.5; color: rgba(0,47,60,0.78)">We will contact you within 1-2 business day.</p>
+                <button class="btn-p" type="submit" style="display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 28px; border: 0; border-radius: 6px; background: #004964; color: #FFFFFF; font: inherit; font-size: 16px; font-weight: 600; cursor: pointer">Submit <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"></path></svg></button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer style="border-top: 1px solid rgba(255,255,255,0.14)">
+      <div class="wrap" style="max-width: 85rem; margin: 0 auto; padding: 80px 40px 0">
+        <div class="g" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 40px; row-gap: 48px">
+          <div style="grid-column: span 4">
+            <h2 style="margin: 0; font-size: 24px; line-height: 1.25; font-weight: 600; letter-spacing: -0.01em; color: #FFFFFF">Subscribe to our newsletter</h2>
+            <p style="margin: 12px 0 0; font-size: 15px; line-height: 1.55; color: rgba(255,255,255,0.78)">Stay updated with SmaBio Labs events, insights, and innovations. Subscribe to our newsletter for the latest scientific updates.</p>
+            <form aria-label="Newsletter" style="margin-top: 24px">
+              <label for="nl-email" style="display: block; margin-bottom: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #00D1DA">Email*</label>
+              <div style="display: flex; gap: 8px">
+                <input class="fld-d" id="nl-email" name="email" type="email" autocomplete="email" required="required" style="flex: 1; min-width: 0; height: 48px; padding: 0 14px; border: 1px solid rgba(255,255,255,0.28); border-radius: 6px; background: rgba(255,255,255,0.06); color: #FFFFFF; font: inherit; font-size: 16px">
+                <button class="btn-c" type="submit" style="flex: none; height: 48px; padding: 0 20px; border: 0; border-radius: 6px; background: #00B4D7; color: #002F3C; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer">Subscribe</button>
+              </div>
+              <label style="display: flex; align-items: center; gap: 10px; min-height: 44px; margin-top: 8px; font-size: 14px; color: rgba(255,255,255,0.82); cursor: pointer"><input type="checkbox" name="optin" style="width: 18px; height: 18px; margin: 0; accent-color: #00B4D7">Yes, subscribe me to your newsletter.</label>
+            </form>
+          </div>
+          <nav aria-label="Our Company" style="grid-column: 6 / span 2">
+            <p style="margin: 0 0 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #00D1DA">Our Company</p>
+            <ul style="list-style: none; margin: 0; padding: 0; font-size: 15px">
+              <li><a class="fl" href="about.html" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">About Us</a></li>
+              <li><a class="fl" href="services.html" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">Services</a></li>
+              <li><a class="fl" href="product-development.html" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">Product Development</a></li>
+              <li><a class="fl" href="analytical-small-molecules.html" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">Analytical Services - Small Molecules</a></li>
+              <li><a class="fl" href="analytical-biologics.html" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">Analytical Services - Biologics</a></li>
+              <li><a class="fl" href="stability.html" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">Stability Storage and Testing</a></li>
+              <li><a class="fl" href="services.html#custom-synthesis" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">Custom Synthesis</a></li>
+              <li><a class="fl" href="drug-discovery.html" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">Drug Discovery and Process Development</a></li>
+              <li><a class="fl" href="ctm-manufacturing.html" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">CTM Manufacturing</a></li>
+              <li><a class="fl" href="quality-and-facilities.html" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">Quality and Facility</a></li>
+              <li><a class="fl" href="blogs.html" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">Resources</a></li>
+              <li><a class="fl" href="events.html" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">Events</a></li>
+              <li><a class="fl" href="contact.html" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">Contact Us</a></li>
+            </ul>
+          </nav>
+          <nav aria-label="Policy" style="grid-column: 8 / span 2">
+            <p style="margin: 0 0 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #00D1DA">Policy Page</p>
+            <ul style="list-style: none; margin: 0; padding: 0; font-size: 15px">
+              <li><a class="fl" href="#" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">Terms of Use</a></li>
+              <li><a class="fl" href="#" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">Privacy Policy</a></li>
+            </ul>
+          </nav>
+          <div style="grid-column: 10 / span 3">
+            <p style="margin: 0 0 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #00D1DA">Contact</p>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55"><a class="fl" href="mailto:contact@smabiolabs.com" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">contact@smabiolabs.com</a></p>
+            <address style="margin: 4px 0 0; font-style: normal; font-size: 15px; line-height: 1.55; color: rgba(255,255,255,0.82)">104 T.W. Alexander Drive, Building 18, Durham, NC 27713, United States</address>
+            <a class="fl" href="https://www.linkedin.com/company/smabiolabs" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin-top: 12px; color: rgba(255,255,255,0.82); font-size: 15px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M8 10v7M8 7v.01M12 17v-7M12 13a3 3 0 0 1 6 0v4"></path></svg>LinkedIn</a>
+          </div>
+        </div>
+        <div class="stack" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 72px; padding: 24px 0 32px; border-top: 1px solid rgba(255,255,255,0.14)">
+          <a href="index.html" style="display: block"><img src="assets/logo-white.png" alt="SmaBio Labs — home" style="display: block; height: 40px; width: auto"></a>
+          <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.04em; color: rgba(255,255,255,0.72)">© 2026 by SmaBio Labs.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+</div>
+<script>document.addEventListener('submit',function(e){e.preventDefault();});</script>
+</body>
+</html>

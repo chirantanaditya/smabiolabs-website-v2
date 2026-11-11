@@ -1,0 +1,820 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A · Home — SmaBio Labs redesign</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+*,*::before,*::after{box-sizing:border-box}
+a{color:#004B59}
+a:hover{color:#004964}
+::selection{background:rgba(0,180,215,0.22)}
+.btn-p{transition:background-color .15s ease,box-shadow .15s ease}
+.btn-p:hover{background:#004B59 !important;color:#FFFFFF !important;box-shadow:inset 0 -3px 0 #00B4D7}
+.btn-o:hover{background:rgba(0,75,89,0.06) !important;color:#004B59 !important}
+.btn-c:hover{background:#00D1DA !important;color:#002F3C !important}
+.nl:hover,.tab:hover{color:#004B59 !important;border-bottom-color:#00B4D7 !important}
+.tl:hover{color:#004964 !important;text-decoration-color:#004B59 !important}
+.row,.row-m{transition:background-color .15s ease}
+.row:hover{background:#FAFAFA !important}
+.row-m:hover{background:#FFFFFF !important}
+.row:hover .arr,.row-m:hover .arr,.arr:hover{background:#004964 !important;border-color:#004964 !important;color:#FFFFFF !important}
+.ctl:hover{background:#004964 !important;border-color:#004964 !important;color:#FFFFFF !important}
+.toc:hover{color:#004B59 !important;background:#FAFAFA}
+.fl:hover{color:#FFFFFF !important;text-decoration:underline;text-decoration-color:#00B4D7;text-underline-offset:4px}
+.fld:focus{outline:none;border-color:#004B59 !important;box-shadow:0 0 0 3px rgba(0,180,215,0.25)}
+.fld-d:focus{outline:none;border-color:#00D1DA !important;box-shadow:0 0 0 3px rgba(0,209,218,0.25)}
+a:focus-visible,button:focus-visible{outline:2px solid #00B4D7;outline-offset:2px}
+@media (max-width:1080px){
+.t1{grid-template-columns:minmax(0,1fr) !important}
+.t1>*{grid-column:auto !important}
+.t2{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+.t2>*{grid-column:auto !important}
+.nav{gap:20px !important}
+}
+@media (max-width:760px){
+.wrap{padding-left:20px !important;padding-right:20px !important}
+.sec{padding-top:64px !important;padding-bottom:64px !important}
+.g,.t2{grid-template-columns:minmax(0,1fr) !important}
+.g>*,.t2>*{grid-column:auto !important}
+.m2{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+.cell{border:0 !important;padding-left:0 !important;padding-right:0 !important}
+.h1{font-size:40px !important;line-height:1.1 !important}
+.h2{font-size:30px !important}
+.quote{font-size:22px !important}
+.num{font-size:44px !important}
+.hide-m{display:none !important}
+.hdr{flex-wrap:wrap;height:auto !important;padding-top:12px !important;padding-bottom:4px !important;row-gap:4px !important}
+.nav{order:3;width:100%;flex-wrap:wrap;gap:0 20px !important;font-size:14px !important}
+.tabs{flex-wrap:wrap;column-gap:20px !important}
+.ind{margin-left:0 !important}
+.photo{height:240px !important}
+.sticky{position:static !important}
+.stack{flex-direction:column;align-items:flex-start !important}
+.pad{padding:24px !important}
+}
+</style>
+<style>
+.service-menu { position: relative; color: #111111; }
+.service-menu summary::-webkit-details-marker { display: none; }
+.service-menu[open] .service-chevron { transform: rotate(180deg); }
+.service-menu summary { display: inline-flex; align-items: center; gap: 6px; list-style: none; cursor: pointer; line-height: 44px; white-space: nowrap; }
+.service-panel { position: absolute; z-index: 20; top: 100%; left: 0; width: max-content; max-width: min(320px, 84vw); background: #fff; border: 1px solid #D9E3E7; border-radius: 6px; box-shadow: 0 8px 24px #004B591a; }
+.service-link { display: flex; align-items: center; gap: 12px; padding: 12px 16px; color: #004B59; text-decoration: none; }
+.service-link svg { flex: none; }
+.service-link:hover, .service-link:focus-visible { background: #EDF6F8; text-decoration: underline; }
+@media (max-width: 700px) { .service-panel { position: static; } }
+</style>
+<style>
+.section-pill {
+  display: inline-block;
+  margin: 0;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: #E9F4F5;
+  color: #004B59;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.section-pill + :is(div, h1, h2) { margin-top: 12px !important; }
+</style>
+<style>
+main > section[aria-labelledby="hero-h"]:first-child,
+.quality-page > .pagehead:first-child {
+  padding-top: 4rem !important;
+}
+</style>
+<style>
+@media (min-width: 1081px) {
+  .home-fold {
+    min-height: calc(100svh - var(--home-fold-top, 7rem));
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+  }
+  .home-fold > section[aria-labelledby="hero-h"] {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+  .home-fold > section[aria-labelledby="hero-h"] > .wrap { width: 100%; }
+}
+</style>
+<style>
+.dosage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+.dosage-card { padding: 1.25rem; border: 1px solid #D9E3E7; border-radius: 8px; }
+.dosage-card h3 { margin: 0 0 .5rem; font-size: 1.25rem; }
+.dosage-card p, .dosage-card li { line-height: 1.55; }
+.dosage-card p { margin: 0 0 .75rem; }
+.dosage-card summary { cursor: pointer; color: #004B59; font-weight: 600; padding-block: .4rem; }
+.dosage-card ul { margin: .5rem 0 0; padding-inline-start: 1.25rem; }
+.dosage-card li + li { margin-top: .4rem; }
+.dosage-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+</style>
+</head>
+<body>
+<div id="dc-root"></div>
+<template id="dc-template">
+<div style="font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 17px; line-height: 1.6; color: #111111; background: #FFFFFF; -webkit-font-smoothing: antialiased">
+
+  <!-- Utility bar -->
+  <div style="background: #FAFAFA; border-bottom: 1px solid #D9E3E7; font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1; color: #404040">
+    <div class="wrap" style="max-width: 85rem; margin: 0 auto; padding: 0 40px; height: 36px; display: flex; align-items: center; justify-content: space-between; gap: 24px">
+      <p style="margin: 0; display: flex; align-items: center; gap: 10px; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis"><span aria-hidden="true" style="width: 6px; height: 6px; flex: none; background: #00B4D7"></span>FDA-registered analytical lab · Research Triangle Park, NC</p>
+      <p class="hide-m" style="margin: 0; display: flex; gap: 24px; white-space: nowrap"><a href="tel:+19197045617" style="color: #404040; text-decoration: none">+1 (919) 704-5617</a><a href="mailto:contact@smabiolabs.com" style="color: #404040; text-decoration: none">contact@smabiolabs.com</a></p>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header style="background: #FFFFFF; border-bottom: 1px solid #D9E3E7">
+    <div class="wrap hdr" style="max-width: 85rem; margin: 0 auto; padding: 0 40px; height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 32px">
+      <a href="index.html" style="display: block; flex: none"><img src="assets/logo-teal.png" alt="SmaBio Labs — home" style="display: block; height: 40px; width: auto"></a>
+      <nav class="nav" aria-label="Primary" style="display: flex; align-items: center; gap: 36px; margin-left: auto; font-size: 15px; font-weight: 500">
+        <a class="nl" href="about.html" style="display: inline-flex; align-items: center; height: 44px; border-bottom: 2px solid transparent; color: #111111; text-decoration: none">About Us</a>
+        <details class="service-menu"><summary class="nl">Services<svg class="service-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="service-panel"><a class="service-link" href="product-development.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6m-5 0v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3M8 15h8"/></svg><span>Product Development</span></a>
+<a class="service-link" href="analytical-small-molecules.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 10l7-4m-7 8l7 4 M8 12a3 3 0 1 0-6 0 3 3 0 0 0 6 0 M21 5a3 3 0 1 0-6 0 3 3 0 0 0 6 0 M21 19a3 3 0 1 0-6 0 3 3 0 0 0 6 0"/></svg><span>Analytical Services - Small Molecules</span></a>
+<a class="service-link" href="analytical-biologics.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3c0 9 12 9 12 18M18 3c0 9-12 9-12 18M7 6h10M7 18h10"/></svg><span>Analytical Services - Biologics</span></a>
+<a class="service-link" href="stability.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4zM4 9h16M8 14h3"/></svg><span>Stability Storage and Testing</span></a>
+<a class="service-link" href="services.html#custom-synthesis"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9zM8 10l4-2 4 2"/></svg><span>Custom Synthesis</span></a><a class="service-link" href="services.html">All Services</a></div></details>
+        <a class="nl" href="blogs.html" style="display: inline-flex; align-items: center; height: 44px; border-bottom: 2px solid transparent; color: #111111; text-decoration: none">Resources</a>
+      <a class="nl" href="quality-and-facilities.html" style="display: inline-flex; align-items: center; height: 44px; border-bottom: 2px solid transparent; color: #111111; text-decoration: none">Quality and Facility</a>
+      </nav>
+      <a class="btn-p" href="contact.html" style="display: inline-flex; align-items: center; flex: none; height: 44px; padding: 0 20px; border-radius: 6px; background: #004964; color: #FFFFFF; font-size: 15px; font-weight: 600; text-decoration: none">Choose a program</a>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="home-fold">
+<!-- Hero -->
+    <section class="sec" aria-labelledby="hero-h" style="padding: 4rem 0 1.5rem">
+      <div class="wrap" style="max-width: 85rem; margin: 0 auto; padding: 0 40px">
+        <div class="g t1" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 40px; row-gap: 20px; align-items: center">
+          <div style="min-width: 0;">
+            <p class="section-pill">Integrated Services</p>
+            <h1 id="hero-h" class="h1" style="margin: 0; font-size: clamp(2rem, 3.4vw, 3rem); line-height: 1.05; font-weight: 600; letter-spacing: -0.02em; color: #111111">Product Development and Analytical Services for <span style="color: #004B59">Complex Drug Products</span> &amp; Combination Systems.</h1>
+            <p style="margin: 16px 0 0; max-width: 600px; font-size: 18px; line-height: 1.6; color: #404040">SmaBio Labs partners with pharmaceutical and biotech teams to design, optimize, and scale formulations from ophthalmics and long-acting injectables to drug-device combination products. Science-driven, regulator-ready, partner-first.</p>
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin-top: 20px">
+              <a class="btn-o" href="analytical-small-molecules.html" style="display: inline-flex; align-items: center; height: 44px; padding: 0 24px; border: 1px solid #004B59; border-radius: 6px; background: transparent; color: #004B59; font-size: 16px; font-weight: 600; text-decoration: none">Explore Analytical Services</a>
+              <a class="tl" href="#" style="display: inline-flex; align-items: center; height: 44px; margin-left: 8px; color: #004B59; font-size: 16px; font-weight: 600; text-decoration: underline; text-decoration-color: #00B4D7; text-decoration-thickness: 2px; text-underline-offset: 6px">Download Factsheet ↓</a>
+            </div>
+          </div>
+          <figure style="position: relative; margin: 0; min-width: 0; padding: 12px; border: 1px solid #D9E3E7; background: #FFFFFF">
+          <span aria-hidden="true" style="position: absolute; top: -1px; left: -1px; width: 16px; height: 16px; border-top: 2px solid #00B4D7; border-left: 2px solid #00B4D7"></span>
+          <span aria-hidden="true" style="position: absolute; top: -1px; right: -1px; width: 16px; height: 16px; border-top: 2px solid #00B4D7; border-right: 2px solid #00B4D7"></span>
+          <span aria-hidden="true" style="position: absolute; bottom: -1px; left: -1px; width: 16px; height: 16px; border-bottom: 2px solid #00B4D7; border-left: 2px solid #00B4D7"></span>
+          <span aria-hidden="true" style="position: absolute; bottom: -1px; right: -1px; width: 16px; height: 16px; border-bottom: 2px solid #00B4D7; border-right: 2px solid #00B4D7"></span>
+          <img class="photo" src="assets/photo-vial-filling.jpg" alt="Gloved hands filling a vial in a sterile lab" style="display: block; width: 100%; height: clamp(280px, calc(100svh - 22rem), 560px); object-fit: cover; object-position: right center">
+        </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proof strip -->
+    <section aria-label="Proof points">
+      <div class="wrap" style="max-width: 85rem; margin: 0 auto; padding: 0 40px">
+        <ul class="g t2" style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr))">
+          <li class="cell" style="display: flex; align-items: center; gap: 12px; padding: 24px 20px 24px 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; line-height: 1.45; letter-spacing: 0.04em; text-transform: uppercase; color: #111111"><span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; flex: none; width: 16px; height: 16px"><svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="#00B4D7" stroke-width="2" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5"></path></svg></span><div>FDA-registered lab*<small style="display: block; margin-top: 4px; font-size: 11px; letter-spacing: normal; text-transform: none; color: #004B59">*Analytical Lab</small></div></li>
+          <li class="cell" style="display: flex; align-items: center; gap: 12px; padding: 24px 20px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; line-height: 1.45; letter-spacing: 0.04em; text-transform: uppercase; color: #111111"><span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; flex: none; width: 16px; height: 16px"><svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="#00B4D7" stroke-width="2" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5"></path></svg></span>U.S.-based operations</li>
+          <li class="cell" style="display: flex; align-items: center; gap: 12px; padding: 24px 20px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; line-height: 1.45; letter-spacing: 0.04em; text-transform: uppercase; color: #111111"><span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; flex: none; width: 16px; height: 16px"><svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="#00B4D7" stroke-width="2" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5"></path></svg></span>Successful client audits</li>
+          <li class="cell" style="display: flex; align-items: center; gap: 12px; padding: 24px 20px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; line-height: 1.45; letter-spacing: 0.04em; text-transform: uppercase; color: #111111"><span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; flex: none; width: 16px; height: 16px"><svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="#00B4D7" stroke-width="2" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5"></path></svg></span>cGMP CTM Phase I–II</li>
+          <li class="cell" style="display: flex; align-items: center; gap: 12px; padding: 24px 0 24px 20px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; line-height: 1.45; letter-spacing: 0.04em; text-transform: uppercase; color: #111111"><span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; flex: none; width: 16px; height: 16px"><svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="#00B4D7" stroke-width="2" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5"></path></svg></span>ICH-compliant stability</li>
+        </ul>
+      </div>
+    </section>
+    </div>
+
+    <!-- Photo band -->
+    
+
+    <!-- §01 Specialties index -->
+    <section class="sec" aria-labelledby="s01-h" style="padding: 112px 0; background: #FAFAFA; border-top: 1px solid #D9E3E7">
+      <div class="wrap" style="max-width: 85rem; margin: 0 auto; padding: 0 40px">
+        <p class="section-pill">Services</p>
+        <div class="g" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 40px; row-gap: 24px; align-items: end; margin: 40px 0 56px">
+          <h2 id="s01-h" class="h2" style="max-inline-size: 25ch; grid-column: span 7; margin: 0; font-size: 44px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em; color: #111111">One Partner. One Strategy. <span style="color: #004B59; display: inline-block">End-to-End Development.</span></h2>
+          <p style="grid-column: 9 / span 4; margin: 0; font-size: 17px; line-height: 1.6; color: #404040">From early-stage discovery through product and process development, analytical services, and commercialization readiness, SmaBio Labs provides integrated scientific support with regulatory precision.</p>
+        </div>
+
+        <div class="hide-m" style="display: grid; grid-template-columns: 72px minmax(0, 3fr) minmax(0, 4fr) minmax(0, 3fr) 44px; column-gap: 32px; margin: 0 -16px; padding: 0 16px 12px; border-bottom: 1px solid #004B59; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(0,47,60,0.78)"><span>No.</span><span>Service line</span><span>Scope</span><span>Methods · Regulatory</span><span></span></div>
+
+        <div class="row-m g" style="display: grid; grid-template-columns: 72px minmax(0, 3fr) minmax(0, 4fr) minmax(0, 3fr) 44px; column-gap: 32px; row-gap: 12px; align-items: start; margin: 0 -16px; padding: 32px 16px; border-bottom: 1px solid #D9E3E7">
+          <span style="padding-top: 6px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500; color: #004B59">01</span>
+          <h3 style="margin: 0; font-size: 24px; line-height: 1.25; font-weight: 600; letter-spacing: -0.01em"><a href="analytical-small-molecules.html" style="color: #111111; text-decoration: none">Analytical Services</a></h3>
+          <div>
+            <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #404040">Comprehensive analytical development and validation supporting regulatory submissions, product release, and long-term lifecycle management.</p>
+            <p style="margin: 8px 0 0; display: flex; flex-wrap: wrap; gap: 0 20px; font-size: 14px; font-weight: 600"><a class="tl" href="analytical-small-molecules.html" style="display: inline-flex; align-items: center; min-height: 44px; color: #004B59; text-decoration: underline; text-decoration-color: #00B4D7; text-decoration-thickness: 2px; text-underline-offset: 5px">Small Molecules →</a><a class="tl" href="analytical-biologics.html" style="display: inline-flex; align-items: center; min-height: 44px; color: #004B59; text-decoration: underline; text-decoration-color: #00B4D7; text-decoration-thickness: 2px; text-underline-offset: 5px">Biologics →</a></p>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px; padding-top: 2px">
+            <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 8px; border: 1px solid #D9E3E7; border-radius: 4px; background: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; color: #004B59; white-space: nowrap">ICH Q1</span>
+            <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 8px; border: 1px solid #D9E3E7; border-radius: 4px; background: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; color: #004B59; white-space: nowrap">ICH Q3D</span>
+            <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 8px; border: 1px solid #D9E3E7; border-radius: 4px; background: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; color: #004B59; white-space: nowrap">USP &lt;233&gt;</span>
+            <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 8px; border: 1px solid #D9E3E7; border-radius: 4px; background: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; color: #004B59; white-space: nowrap">OEB 5</span>
+          </div>
+          <a class="arr" href="analytical-small-molecules.html" aria-label="Analytical Services" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid #D9E3E7; border-radius: 6px; background: #FFFFFF; color: #004B59"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"></path></svg></a>
+        </div>
+
+        <div class="row-m g" style="display: grid; grid-template-columns: 72px minmax(0, 3fr) minmax(0, 4fr) minmax(0, 3fr) 44px; column-gap: 32px; row-gap: 12px; align-items: start; margin: 0 -16px; padding: 32px 16px; border-bottom: 1px solid #D9E3E7">
+          <span style="padding-top: 6px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500; color: #004B59">02</span>
+          <h3 style="margin: 0; font-size: 24px; line-height: 1.25; font-weight: 600; letter-spacing: -0.01em"><a href="product-development.html" style="color: #111111; text-decoration: none">Product Development</a></h3>
+          <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #404040">Strategic formulation and CMC development designed to advance APIs into stable dosage forms ready for clinical development.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px; padding-top: 2px">
+            <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 8px; border: 1px solid #D9E3E7; border-radius: 4px; background: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; color: #004B59; white-space: nowrap">QbD</span>
+            <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 8px; border: 1px solid #D9E3E7; border-radius: 4px; background: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; color: #004B59; white-space: nowrap">QTPP · CQAs</span>
+            <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 8px; border: 1px solid #D9E3E7; border-radius: 4px; background: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; color: #004B59; white-space: nowrap">CPPs</span>
+            <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 8px; border: 1px solid #D9E3E7; border-radius: 4px; background: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; color: #004B59; white-space: nowrap">ICH Zones I–IVb</span>
+          </div>
+          <a class="arr" href="product-development.html" aria-label="Product Development" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid #D9E3E7; border-radius: 6px; background: #FFFFFF; color: #004B59"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"></path></svg></a>
+        </div>
+
+        <div class="row-m g" style="display: grid; grid-template-columns: 72px minmax(0, 3fr) minmax(0, 4fr) minmax(0, 3fr) 44px; column-gap: 32px; row-gap: 12px; align-items: start; margin: 0 -16px; padding: 32px 16px; border-bottom: 1px solid #D9E3E7">
+          <span style="padding-top: 6px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500; color: #004B59">03</span>
+          <h3 style="margin: 0; font-size: 24px; line-height: 1.25; font-weight: 600; letter-spacing: -0.01em"><a href="drug-discovery.html" style="color: #111111; text-decoration: none">Drug Discovery &amp; Process Development</a></h3>
+          <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #404040">Integrated discovery and process chemistry designed to deliver scalable, efficient routes from early research through API scale-up.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px; padding-top: 2px">
+            <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 8px; border: 1px solid #D9E3E7; border-radius: 4px; background: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; color: #004B59; white-space: nowrap">cGMP API</span>
+            <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 8px; border: 1px solid #D9E3E7; border-radius: 4px; background: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; color: #004B59; white-space: nowrap">Type II · III DMF</span>
+            <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 8px; border: 1px solid #D9E3E7; border-radius: 4px; background: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; color: #004B59; white-space: nowrap">ICH Q3A / Q3B</span>
+          </div>
+          <a class="arr" href="drug-discovery.html" aria-label="Drug Discovery and Process Development" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid #D9E3E7; border-radius: 6px; background: #FFFFFF; color: #004B59"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"></path></svg></a>
+        </div>
+
+        <div class="row-m g" style="display: grid; grid-template-columns: 72px minmax(0, 3fr) minmax(0, 4fr) minmax(0, 3fr) 44px; column-gap: 32px; row-gap: 12px; align-items: start; margin: 0 -16px; padding: 32px 16px; border-bottom: 1px solid #D9E3E7">
+          <span style="padding-top: 6px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500; color: #004B59">04</span>
+          <h3 style="margin: 0; font-size: 24px; line-height: 1.25; font-weight: 600; letter-spacing: -0.01em"><a href="stability.html" style="color: #111111; text-decoration: none">Stability Storage &amp; Testing</a></h3>
+          <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #404040">ICH-compliant stability storage and analytical testing supporting clinical development and global regulatory submissions.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px; padding-top: 2px">
+            <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 8px; border: 1px solid #D9E3E7; border-radius: 4px; background: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; color: #004B59; white-space: nowrap">ICH Q1</span>
+            <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 8px; border: 1px solid #D9E3E7; border-radius: 4px; background: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; color: #004B59; white-space: nowrap">25/60 · 30/65 · 40/75</span>
+            <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 8px; border: 1px solid #D9E3E7; border-radius: 4px; background: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; color: #004B59; white-space: nowrap">to −80 °C</span>
+          </div>
+          <a class="arr" href="stability.html" aria-label="Stability Storage and Testing" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid #D9E3E7; border-radius: 6px; background: #FFFFFF; color: #004B59"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"></path></svg></a>
+        </div>
+
+        <div class="row-m g" style="display: grid; grid-template-columns: 72px minmax(0, 3fr) minmax(0, 4fr) minmax(0, 3fr) 44px; column-gap: 32px; row-gap: 12px; align-items: start; margin: 0 -16px; padding: 32px 16px; border-bottom: 1px solid #D9E3E7">
+          <span style="padding-top: 6px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500; color: #004B59">05</span>
+          <h3 style="margin: 0; font-size: 24px; line-height: 1.25; font-weight: 600; letter-spacing: -0.01em"><a href="ctm-manufacturing.html" style="color: #111111; text-decoration: none">CTM Manufacturing</a></h3>
+          <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #404040">GMP-compliant clinical trial material manufacturing supporting early-phase studies and regulatory submissions.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px; padding-top: 2px">
+            <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 8px; border: 1px solid #D9E3E7; border-radius: 4px; background: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; color: #004B59; white-space: nowrap">cGMP Phase I–II</span>
+            <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 8px; border: 1px solid #D9E3E7; border-radius: 4px; background: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; color: #004B59; white-space: nowrap">ISO 7/8</span>
+            <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 8px; border: 1px solid #D9E3E7; border-radius: 4px; background: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; color: #004B59; white-space: nowrap">21 CFR</span>
+          </div>
+          <a class="arr" href="ctm-manufacturing.html" aria-label="CTM Manufacturing" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid #D9E3E7; border-radius: 6px; background: #FFFFFF; color: #004B59"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"></path></svg></a>
+        </div>
+
+        <div class="row-m g" style="display: grid; grid-template-columns: 72px minmax(0, 3fr) minmax(0, 4fr) minmax(0, 3fr) 44px; column-gap: 32px; row-gap: 12px; align-items: start; margin: 0 -16px; padding: 32px 16px; border-bottom: 1px solid #D9E3E7">
+          <span style="padding-top: 6px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500; color: #004B59">06</span>
+          <h3 style="margin: 0; font-size: 24px; line-height: 1.25; font-weight: 600; letter-spacing: -0.01em"><a href="services.html" style="color: #111111; text-decoration: none">Custom Synthesis</a></h3>
+          <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #404040">Flexible synthesis support for API intermediates, reference standards and impurities.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px; padding-top: 2px">
+            <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 8px; border: 1px solid #D9E3E7; border-radius: 4px; background: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; color: #004B59; white-space: nowrap">API intermediates</span>
+            <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 8px; border: 1px solid #D9E3E7; border-radius: 4px; background: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; color: #004B59; white-space: nowrap">Reference standards</span>
+            <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 8px; border: 1px solid #D9E3E7; border-radius: 4px; background: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; color: #004B59; white-space: nowrap">Impurities</span>
+          </div>
+          <a class="arr" href="services.html" aria-label="Custom Synthesis" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid #D9E3E7; border-radius: 6px; background: #FFFFFF; color: #004B59"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"></path></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- §02 Quality · Process · Compliance -->
+    <section class="sec" aria-labelledby="s02-h" style="padding: 112px 0">
+      <div class="wrap" style="max-width: 85rem; margin: 0 auto; padding: 0 40px">
+        <p class="section-pill">Quality, Process and Compliance</p>
+        <div class="g" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 40px; row-gap: 24px; align-items: end; margin: 40px 0 64px">
+          <h2 id="s02-h" class="h2" style="grid-column: span 7; margin: 0; font-size: 44px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em; color: #111111">Why SmaBio Labs</h2>
+          <p style="grid-column: 9 / span 4; margin: 0; font-size: 17px; line-height: 1.6; color: #404040">A skilled team and state-of-the-art facilities in Research Triangle Park, NC, designed to turn scientific potential into meaningful progress.</p>
+        </div>
+        <div class="g" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr))">
+
+          <div class="cell" style="padding: 0 32px 40px 0">
+            <p class="num" aria-hidden="true" style="margin: 0; font-size: 64px; line-height: 1; font-weight: 600; letter-spacing: -0.03em; color: #00B4D7">01</p>
+            <h3 style="margin: 24px 0 0; font-size: 32px; line-height: 1.15; font-weight: 600; letter-spacing: -0.02em; color: #111111">Quality</h3>
+            <ul style="list-style: none; margin: 32px 0 0; padding: 0">
+              <li style="margin-bottom: 16px">
+                <h4 style="margin: 0; font-size: 18px; line-height: 1.35; font-weight: 600; color: #111111">FDA-Registered Analytical Lab</h4>
+                <p style="margin: 6px 0 0; font-size: 15px; line-height: 1.55; color: #404040">Advanced analytical capabilities designed to support rigorous quality and regulatory requirements</p>
+              </li>
+              <li style="margin-bottom: 16px">
+                <h4 style="margin: 0; font-size: 18px; line-height: 1.35; font-weight: 600; color: #111111">Expert Analytical Services</h4>
+                <p style="margin: 6px 0 0; font-size: 15px; line-height: 1.55; color: #404040">Robust analytical solutions that support informed decisions throughout discovery and development programs</p>
+              </li>
+            </ul>
+            <dl style="margin: 20px 0 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.4">
+              <div style="display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-top: 1px solid #D9E3E7"><dt style="letter-spacing: 0.06em; text-transform: uppercase; color: rgba(0,47,60,0.78)">Stability</dt><dd style="margin: 0; text-align: right; color: #111111">ICH Q1</dd></div>
+              <div style="display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-top: 1px solid #D9E3E7"><dt style="letter-spacing: 0.06em; text-transform: uppercase; color: rgba(0,47,60,0.78)">Elemental impurities</dt><dd style="margin: 0; text-align: right; color: #111111">ICH Q3D · USP &lt;233&gt;</dd></div>
+              <div style="display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-top: 1px solid #D9E3E7; border-bottom: 1px solid #D9E3E7"><dt style="letter-spacing: 0.06em; text-transform: uppercase; color: rgba(0,47,60,0.78)">Residual solvents</dt><dd style="margin: 0; text-align: right; color: #111111">ICH Q3C</dd></div>
+            </dl>
+          </div>
+
+          <div class="cell" style="padding: 0 32px 40px; border-left: 1px solid #D9E3E7">
+            <p class="num" aria-hidden="true" style="margin: 0; font-size: 64px; line-height: 1; font-weight: 600; letter-spacing: -0.03em; color: #00B4D7">02</p>
+            <h3 style="margin: 24px 0 0; font-size: 32px; line-height: 1.15; font-weight: 600; letter-spacing: -0.02em; color: #111111">Process</h3>
+            <ul style="list-style: none; margin: 32px 0 0; padding: 0">
+              <li style="margin-bottom: 16px">
+                <h4 style="margin: 0; font-size: 18px; line-height: 1.35; font-weight: 600; color: #111111">Chemistry to Clinic</h4>
+                <p style="margin: 6px 0 0; font-size: 15px; line-height: 1.55; color: #404040">Seamlessly supporting product development from molecule characterization through CTM manufacturing</p>
+              </li>
+              <li style="margin-bottom: 16px">
+                <h4 style="margin: 0; font-size: 18px; line-height: 1.35; font-weight: 600; color: #111111">Immediate Capacity</h4>
+                <p style="margin: 6px 0 0; font-size: 15px; line-height: 1.55; color: #404040">Available capacity and responsive project initiation to help programs move forward without unnecessary delays</p>
+              </li>
+              <li style="margin-bottom: 16px">
+                <h4 style="margin: 0; font-size: 18px; line-height: 1.35; font-weight: 600; color: #111111">Complex Formulations</h4>
+                <p style="margin: 6px 0 0; font-size: 15px; line-height: 1.55; color: #404040">Specialized expertise in the design and development of complex drug products and combination systems</p>
+              </li>
+            </ul>
+            <dl style="margin: 20px 0 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.4">
+              <div style="display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-top: 1px solid #D9E3E7"><dt style="letter-spacing: 0.06em; text-transform: uppercase; color: rgba(0,47,60,0.78)">Framework</dt><dd style="margin: 0; text-align: right; color: #111111">QbD</dd></div>
+              <div style="display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-top: 1px solid #D9E3E7"><dt style="letter-spacing: 0.06em; text-transform: uppercase; color: rgba(0,47,60,0.78)">Defined</dt><dd style="margin: 0; text-align: right; color: #111111">QTPP · CQAs · CPPs</dd></div>
+              <div style="display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-top: 1px solid #D9E3E7; border-bottom: 1px solid #D9E3E7"><dt style="letter-spacing: 0.06em; text-transform: uppercase; color: rgba(0,47,60,0.78)">Climatic zones</dt><dd style="margin: 0; text-align: right; color: #111111">ICH I–IVb</dd></div>
+            </dl>
+          </div>
+
+          <div class="cell" style="padding: 0 0 40px 32px; border-left: 1px solid #D9E3E7">
+            <p class="num" aria-hidden="true" style="margin: 0; font-size: 64px; line-height: 1; font-weight: 600; letter-spacing: -0.03em; color: #00B4D7">03</p>
+            <h3 style="margin: 24px 0 0; font-size: 32px; line-height: 1.15; font-weight: 600; letter-spacing: -0.02em; color: #111111">Compliance</h3>
+            <ul style="list-style: none; margin: 32px 0 0; padding: 0">
+              <li style="margin-bottom: 16px">
+                <h4 style="margin: 0; font-size: 18px; line-height: 1.35; font-weight: 600; color: #111111">Successful Client Audits</h4>
+                <p style="margin: 6px 0 0; font-size: 15px; line-height: 1.55; color: #404040">Consistently earning sponsor confidence through successful audits and compliance excellence</p>
+              </li>
+            </ul>
+            <dl style="margin: 20px 0 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.4">
+              <div style="display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-top: 1px solid #D9E3E7"><dt style="letter-spacing: 0.06em; text-transform: uppercase; color: rgba(0,47,60,0.78)">Operations</dt><dd style="margin: 0; text-align: right; color: #111111">U.S.-based</dd></div>
+              <div style="display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-top: 1px solid #D9E3E7"><dt style="letter-spacing: 0.06em; text-transform: uppercase; color: rgba(0,47,60,0.78)">Clinical supply</dt><dd style="margin: 0; text-align: right; color: #111111">cGMP CTM Phase I–II</dd></div>
+              <div style="display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-top: 1px solid #D9E3E7"><dt style="letter-spacing: 0.06em; text-transform: uppercase; color: rgba(0,47,60,0.78)">Regulation</dt><dd style="margin: 0; text-align: right; color: #111111">21 CFR cGMP</dd></div>
+              <div style="display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-top: 1px solid #D9E3E7"><dt style="letter-spacing: 0.06em; text-transform: uppercase; color: rgba(0,47,60,0.78)">Cleanrooms</dt><dd style="margin: 0; text-align: right; color: #111111">ISO 7/8 · ISO 5 BSC</dd></div>
+              <div style="display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-top: 1px solid #D9E3E7; border-bottom: 1px solid #D9E3E7"><dt style="letter-spacing: 0.06em; text-transform: uppercase; color: rgba(0,47,60,0.78)">Containment</dt><dd style="margin: 0; text-align: right; color: #111111">HPAPI up to OEB 5</dd></div>
+            </dl>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- §03 QbD pathway -->
+    <section class="sec" aria-labelledby="s03-h" style="padding: 112px 0; background: #FAFAFA; border-top: 1px solid #D9E3E7">
+      <div class="wrap" style="max-width: 85rem; margin: 0 auto; padding: 0 40px">
+        <p class="section-pill">Development Pathway</p>
+        <div class="g" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 40px; row-gap: 24px; align-items: end; margin: 40px 0 72px">
+          <h2 id="s03-h" class="h2" style="grid-column: span 7; margin: 0; font-size: 44px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em; color: #111111"><span style="color: #004B59">QbD-Driven</span> Product Development Pathway for Regulatory Alignment</h2>
+          <p style="grid-column: 9 / span 4; margin: 0; font-size: 17px; line-height: 1.6; color: #404040">From pre-formulation to launch, SmaBio Labs develops robust, compliant, patient-focused pharmaceutical solutions designed for successful development and scale-up.</p>
+        </div>
+        <ol class="g t2" style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr))">
+          <li class="cell" style="position: relative; padding: 40px 32px 8px 0; border-top: 2px solid #00B4D7">
+            <span aria-hidden="true" style="position: absolute; top: -7px; left: 0; width: 12px; height: 12px; border-radius: 50%; background: #00B4D7; box-shadow: 0 0 0 4px #FAFAFA"></span>
+            <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #004B59">Step 01</p>
+            <h3 style="margin: 12px 0 0; font-size: 22px; line-height: 1.25; font-weight: 600; letter-spacing: -0.01em; color: #111111">Pre-Formulation</h3>
+            <p style="margin: 12px 0 0; font-size: 15px; line-height: 1.55; color: #404040">Defining Product and Material Attributes to Guide Formulation and Development Strategies.</p>
+            <ul style="list-style: none; margin: 24px 0 0; padding: 20px 0 0; border-top: 1px solid #D9E3E7; display: grid; gap: 10px">
+              <li style="display: grid; grid-template-columns: 6px minmax(0, 1fr); column-gap: 12px; font-size: 15px; line-height: 1.5; color: #111111"><span aria-hidden="true" style="width: 6px; height: 6px; margin-top: 8px; background: #00B4D7"></span><span>Physicochemical Characterization</span></li>
+              <li style="display: grid; grid-template-columns: 6px minmax(0, 1fr); column-gap: 12px; font-size: 15px; line-height: 1.5; color: #111111"><span aria-hidden="true" style="width: 6px; height: 6px; margin-top: 8px; background: #00B4D7"></span><span>Drug/Excipient Compatibility</span></li>
+              <li style="display: grid; grid-template-columns: 6px minmax(0, 1fr); column-gap: 12px; font-size: 15px; line-height: 1.5; color: #111111"><span aria-hidden="true" style="width: 6px; height: 6px; margin-top: 8px; background: #00B4D7"></span><span>Excipient Selection</span></li>
+              <li style="display: grid; grid-template-columns: 6px minmax(0, 1fr); column-gap: 12px; font-size: 15px; line-height: 1.5; color: #111111"><span aria-hidden="true" style="width: 6px; height: 6px; margin-top: 8px; background: #00B4D7"></span><span>Define QTPP and CQAs</span></li>
+            </ul>
+          </li>
+          <li class="cell" style="position: relative; padding: 40px 32px 8px; border-top: 2px solid #00B4D7; border-left: 1px solid #D9E3E7">
+            <span aria-hidden="true" style="position: absolute; top: -7px; left: -6px; width: 12px; height: 12px; border-radius: 50%; background: #00B4D7; box-shadow: 0 0 0 4px #FAFAFA"></span>
+            <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #004B59">Step 02</p>
+            <h3 style="margin: 12px 0 0; font-size: 22px; line-height: 1.25; font-weight: 600; letter-spacing: -0.01em; color: #111111">Formulation Development</h3>
+            <p style="margin: 12px 0 0; font-size: 15px; line-height: 1.55; color: #404040">Developing Robust Formulations to Support Product Performance, Quality, and Manufacturability.</p>
+            <ul style="list-style: none; margin: 24px 0 0; padding: 20px 0 0; border-top: 1px solid #D9E3E7; display: grid; gap: 10px">
+              <li style="display: grid; grid-template-columns: 6px minmax(0, 1fr); column-gap: 12px; font-size: 15px; line-height: 1.5; color: #111111"><span aria-hidden="true" style="width: 6px; height: 6px; margin-top: 8px; background: #00B4D7"></span><span>Proof-of-Concept Batches</span></li>
+              <li style="display: grid; grid-template-columns: 6px minmax(0, 1fr); column-gap: 12px; font-size: 15px; line-height: 1.5; color: #111111"><span aria-hidden="true" style="width: 6px; height: 6px; margin-top: 8px; background: #00B4D7"></span><span>Lead Formulation Selection</span></li>
+              <li style="display: grid; grid-template-columns: 6px minmax(0, 1fr); column-gap: 12px; font-size: 15px; line-height: 1.5; color: #111111"><span aria-hidden="true" style="width: 6px; height: 6px; margin-top: 8px; background: #00B4D7"></span><span>Packaging Selection &amp; Studies</span></li>
+              <li style="display: grid; grid-template-columns: 6px minmax(0, 1fr); column-gap: 12px; font-size: 15px; line-height: 1.5; color: #111111"><span aria-hidden="true" style="width: 6px; height: 6px; margin-top: 8px; background: #00B4D7"></span><span>Identify Critical Material Attributes (CMAs)</span></li>
+            </ul>
+          </li>
+          <li class="cell" style="position: relative; padding: 40px 32px 8px; border-top: 2px solid #00B4D7; border-left: 1px solid #D9E3E7">
+            <span aria-hidden="true" style="position: absolute; top: -7px; left: -6px; width: 12px; height: 12px; border-radius: 50%; background: #00B4D7; box-shadow: 0 0 0 4px #FAFAFA"></span>
+            <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #004B59">Step 03</p>
+            <h3 style="margin: 12px 0 0; font-size: 22px; line-height: 1.25; font-weight: 600; letter-spacing: -0.01em; color: #111111">Process Development</h3>
+            <p style="margin: 12px 0 0; font-size: 15px; line-height: 1.55; color: #404040">Designing Robust Manufacturing Processes to Support Consistent Product Quality and Scale-up.</p>
+            <ul style="list-style: none; margin: 24px 0 0; padding: 20px 0 0; border-top: 1px solid #D9E3E7; display: grid; gap: 10px">
+              <li style="display: grid; grid-template-columns: 6px minmax(0, 1fr); column-gap: 12px; font-size: 15px; line-height: 1.5; color: #111111"><span aria-hidden="true" style="width: 6px; height: 6px; margin-top: 8px; background: #00B4D7"></span><span>Define Process Design</span></li>
+              <li style="display: grid; grid-template-columns: 6px minmax(0, 1fr); column-gap: 12px; font-size: 15px; line-height: 1.5; color: #111111"><span aria-hidden="true" style="width: 6px; height: 6px; margin-top: 8px; background: #00B4D7"></span><span>Define CPPs</span></li>
+              <li style="display: grid; grid-template-columns: 6px minmax(0, 1fr); column-gap: 12px; font-size: 15px; line-height: 1.5; color: #111111"><span aria-hidden="true" style="width: 6px; height: 6px; margin-top: 8px; background: #00B4D7"></span><span>Define Equipment Train</span></li>
+            </ul>
+          </li>
+          <li class="cell" style="position: relative; padding: 40px 0 8px 32px; border-top: 2px solid #00B4D7; border-left: 1px solid #D9E3E7">
+            <span aria-hidden="true" style="position: absolute; top: -7px; left: -6px; width: 12px; height: 12px; border-radius: 50%; background: #00B4D7; box-shadow: 0 0 0 4px #FAFAFA"></span>
+            <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #004B59">Step 04</p>
+            <h3 style="margin: 12px 0 0; font-size: 22px; line-height: 1.25; font-weight: 600; letter-spacing: -0.01em; color: #111111">Scale-Up and Stability</h3>
+            <p style="margin: 12px 0 0; font-size: 15px; line-height: 1.55; color: #404040">Confirming Product Robustness Through Scale-Up and Stability Studies.</p>
+            <ul style="list-style: none; margin: 24px 0 0; padding: 20px 0 0; border-top: 1px solid #D9E3E7; display: grid; gap: 10px">
+              <li style="display: grid; grid-template-columns: 6px minmax(0, 1fr); column-gap: 12px; font-size: 15px; line-height: 1.5; color: #111111"><span aria-hidden="true" style="width: 6px; height: 6px; margin-top: 8px; background: #00B4D7"></span><span>Define Control Strategies</span></li>
+              <li style="display: grid; grid-template-columns: 6px minmax(0, 1fr); column-gap: 12px; font-size: 15px; line-height: 1.5; color: #111111"><span aria-hidden="true" style="width: 6px; height: 6px; margin-top: 8px; background: #00B4D7"></span><span>Stability Study Design and Execution</span></li>
+              <li style="display: grid; grid-template-columns: 6px minmax(0, 1fr); column-gap: 12px; font-size: 15px; line-height: 1.5; color: #111111"><span aria-hidden="true" style="width: 6px; height: 6px; margin-top: 8px; background: #00B4D7"></span><span>Shelf Life and Storage Assessment</span></li>
+            </ul>
+          </li>
+        </ol>
+        <div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid #D9E3E7">
+          <a class="btn-o" href="product-development.html" style="display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 24px; border: 1px solid #004B59; border-radius: 6px; color: #004B59; font-size: 16px; font-weight: 600; text-decoration: none">More Details <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- §04 Dosage forms -->
+    <section class="sec" aria-labelledby="s04-h" style="padding: 112px 0">
+      <div class="wrap" style="max-width: 85rem; margin: 0 auto; padding: 0 40px">
+        <p class="section-pill">Dosage Forms</p>
+        <div class="stack" style="display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin: 40px 0 56px">
+          <h2 id="s04-h" class="h2" style="margin: 0; font-size: 44px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em; color: #111111">Dosage Forms</h2>
+          <a class="tl" href="product-development.html" style="display: inline-flex; align-items: center; min-height: 44px; color: #004B59; font-size: 16px; font-weight: 600; text-decoration: underline; text-decoration-color: #00B4D7; text-decoration-thickness: 2px; text-underline-offset: 6px">More Details →</a>
+        </div>
+        <div class="dosage-grid">
+          <article class="dosage-card">
+            <h3>Sterile Formulations</h3>
+            <p>Solutions, suspensions, emulsions, and lyophilized products require precision in sterility, solubility, and stability.</p>
+            <details>
+              <summary>View capabilities <span class="dosage-sr">for Sterile Formulations</span></summary>
+              <ul>
+                <li>Optimize drug solubility and formulation stability.</li>
+                <li>Maintain sterility throughout product development.</li>
+                <li>Control endotoxin levels, pH, and osmolality.</li>
+                <li>Support aseptic processing requirements.</li>
+                <li>Evaluate container-closure compatibility.</li>
+                <li>Provide stability studies and regulatory development support.</li>
+              </ul>
+            </details>
+          </article>
+          <article class="dosage-card">
+            <h3>Ophthalmic Formulations</h3>
+            <p>Ophthalmic formulations demand exceptional precision in sterility, stability, drug delivery, and patient comfort.</p>
+            <details>
+              <summary>View capabilities <span class="dosage-sr">for Ophthalmic Formulations</span></summary>
+              <ul>
+                <li>Develop eye drops, ointments, and ophthalmic gels.</li>
+                <li>Optimize drug solubility, stability, and ocular bioavailability.</li>
+                <li>Control pH, osmolality, and viscosity for patient comfort.</li>
+                <li>Ensure sterility and compatibility throughout product development.</li>
+                <li>Optimize excipients and delivery systems for effective ocular drug delivery.</li>
+                <li>Support formulation development, stability optimization, and regulatory readiness.</li>
+              </ul>
+            </details>
+          </article>
+          <article class="dosage-card">
+            <h3>Topical Formulations</h3>
+            <p>Topical formulations require the right balance of efficacy, texture, absorption, and skin safety.</p>
+            <details>
+              <summary>View capabilities <span class="dosage-sr">for Topical Formulations</span></summary>
+              <ul>
+                <li>Develop creams, gels, and ointments.</li>
+                <li>Optimize emulsifiers, gelling agents, and penetration enhancers.</li>
+                <li>Ensure APIs reach the intended skin layer while maintaining potency.</li>
+                <li>Optimize texture, spreadability, absorption, and release.</li>
+                <li>Minimize irritation and sensitization risks.</li>
+                <li>Conduct rigorous formulation and stability testing.</li>
+                <li>Support development from concept to commercial readiness.</li>
+              </ul>
+            </details>
+          </article>
+          <article class="dosage-card">
+            <h3>Medical Devices</h3>
+            <p>Medical device development requires careful consideration of product performance, safety, compatibility, and regulatory requirements.</p>
+            <details>
+              <summary>View capabilities <span class="dosage-sr">for Medical Devices</span></summary>
+              <ul>
+                <li>Product and formulation development support.</li>
+                <li>Material and excipient compatibility evaluation.</li>
+                <li>Performance and stability assessment.</li>
+                <li>Risk-based development and optimization.</li>
+                <li>Testing strategy and analytical support.</li>
+                <li>Regulatory documentation support.</li>
+                <li>Development support toward commercial readiness.</li>
+              </ul>
+            </details>
+          </article>
+          <article class="dosage-card">
+            <h3>Transdermal Formulations</h3>
+            <p>Transdermal patch development demands precision, from drug selection to skin compatibility.</p>
+            <details>
+              <summary>View capabilities <span class="dosage-sr">for Transdermal Formulations</span></summary>
+              <ul>
+                <li>Overcome skin’s natural barrier while ensuring stability and patient comfort.</li>
+                <li>Select drugs with optimal properties including low molecular weight, lipophilicity, and potency.</li>
+                <li>Design matrix polymers, adhesives, and enhancers for consistent drug release.</li>
+                <li>Minimize risks of skin irritation and sensitization.</li>
+                <li>Expertise in excipient screening, in-vitro permeation, and stability optimization.</li>
+                <li>End-to-end support for safe and scalable transdermal patch development.</li>
+              </ul>
+            </details>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- §05 Testimonials -->
+    <section class="sec" aria-labelledby="s05-h" style="padding: 112px 0; background: #FAFAFA; border-top: 1px solid #D9E3E7">
+      <div class="wrap" style="max-width: 85rem; margin: 0 auto; padding: 0 40px">
+        <p class="section-pill">Testimonials</p>
+        <h2 id="s05-h" class="h2" style="margin: 40px 0 56px; font-size: 44px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em; color: #111111">What our partners say.</h2>
+        <div class="g" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 40px">
+          <div class="hide-m" aria-hidden="true" style="grid-column: span 1; font-size: 96px; line-height: 0.8; font-weight: 600; color: #00B4D7">“</div>
+          <div aria-live="polite" style="grid-column: 2 / span 10; min-height: 360px">
+            <sc-if value="{{cur.real}}" hint-placeholder-val="{{ true }}">
+              <blockquote style="margin: 0">
+                <p class="quote" style="margin: 0; font-size: 30px; line-height: 1.4; font-weight: 400; letter-spacing: -0.01em; color: #111111">{{cur.quote}}</p>
+              </blockquote>
+            </sc-if>
+            <sc-if value="{{cur.ph}}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-direction: column; justify-content: center; gap: 16px; min-height: 320px; padding: 48px; border: 1px dashed rgba(0,47,60,0.45); border-radius: 10px; background: #FFFFFF">
+                <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(0,47,60,0.78)">{{cur.slot}}</p>
+                <p class="quote" style="margin: 0; font-size: 30px; line-height: 1.4; font-weight: 400; color: rgba(0,47,60,0.72)">[Add client testimonial]</p>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+        <div class="stack" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 48px; padding-top: 24px; border-top: 1px solid #D9E3E7">
+          <div>
+            <sc-if value="{{cur.real}}" hint-placeholder-val="{{ true }}">
+              <div style="display: flex; align-items: center; gap: 16px">
+                <span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; background: #004B59; color: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500">{{cur.initials}}</span>
+                <div>
+                  <p style="margin: 0; font-size: 17px; line-height: 1.3; font-weight: 600; color: #111111">{{cur.name}}</p>
+                  <p style="margin: 4px 0 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(0,47,60,0.78)">{{cur.role}}</p>
+                </div>
+              </div>
+            </sc-if>
+            <sc-if value="{{cur.ph}}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; align-items: center; gap: 16px">
+                <span aria-hidden="true" style="display: inline-block; width: 48px; height: 48px; border: 1px dashed rgba(0,47,60,0.45)"></span>
+                <div>
+                  <p style="margin: 0; font-size: 17px; line-height: 1.3; font-weight: 600; color: rgba(0,47,60,0.72)">[Client name]</p>
+                  <p style="margin: 4px 0 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(0,47,60,0.72)">[Title, Company]</p>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+          <div style="display: flex; align-items: center; gap: 16px">
+            <div role="group" aria-label="Choose testimonial" style="display: flex; align-items: center; gap: 4px">
+              <sc-for list="{{dots}}" as="d" hint-placeholder-count="4">
+                <button type="button" onClick="{{ d.pick }}" aria-label="{{d.label}}" style="display: flex; align-items: center; width: 28px; height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer">
+                  <sc-if value="{{d.on}}" hint-placeholder-val="{{ false }}"><span style="display: block; width: 100%; height: 3px; background: #00B4D7"></span></sc-if>
+                  <sc-if value="{{d.off}}" hint-placeholder-val="{{ true }}"><span style="display: block; width: 100%; height: 3px; background: #D9E3E7"></span></sc-if>
+                </button>
+              </sc-for>
+            </div>
+            <span style="min-width: 64px; text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500; color: #111111">{{counter}} / {{total}}</span>
+            <button class="ctl" type="button" onClick="{{ prev }}" aria-label="Previous testimonial" style="display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; padding: 0; border: 1px solid #004B59; border-radius: 6px; background: #FFFFFF; color: #004B59; cursor: pointer"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15.5 10h-11M9 5.5L4.5 10 9 14.5"></path></svg></button>
+            <button class="ctl" type="button" onClick="{{ next }}" aria-label="Next testimonial" style="display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; padding: 0; border: 1px solid #004B59; border-radius: 6px; background: #FFFFFF; color: #004B59; cursor: pointer"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10h11M11 5.5l4.5 4.5-4.5 4.5"></path></svg></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- §06 Leadership -->
+    <section class="sec" aria-labelledby="s06-h" style="padding: 112px 0">
+      <div class="wrap" style="max-width: 85rem; margin: 0 auto; padding: 0 40px">
+        <p class="section-pill">Leadership</p>
+        <div class="g" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 40px; row-gap: 24px; align-items: end; margin: 40px 0 56px">
+          <h2 id="s06-h" class="h2" style="grid-column: span 7; margin: 0; font-size: 44px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em; color: #111111">Meet Our Leadership</h2>
+          <div style="grid-column: 9 / span 4">
+            <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #404040">Meet the quality and scientific leaders guiding SmaBio Labs, with deep expertise across quality assurance, product development, analytical services and manufacturing</p>
+            <a class="tl" href="about.html" style="display: inline-flex; align-items: center; min-height: 44px; margin-top: 8px; color: #004B59; font-size: 16px; font-weight: 600; text-decoration: underline; text-decoration-color: #00B4D7; text-decoration-thickness: 2px; text-underline-offset: 6px">About Us →</a>
+          </div>
+        </div>
+        <div class="g t2" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 48px 32px">
+          <article>
+            <img src="assets/team-lakshmidevi-ethirajan.jpg" alt="Lakshmidevi Ethirajan, PhD" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; background: #FAFAFA">
+            <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid #111111">
+              <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #004B59">CEO/Co-Founder</p>
+              <h3 style="margin: 8px 0 0; font-size: 20px; line-height: 1.3; font-weight: 600; letter-spacing: -0.01em; color: #111111">Lakshmidevi Ethirajan, PhD</h3>
+              <p style="margin: 10px 0 0; font-size: 15px; line-height: 1.55; color: #404040">Leading the company's vision, driving growth strategies, and overseeing overall operational excellence to ensure sustainable success.</p>
+            </div>
+          </article>
+          <article>
+            <img src="assets/team-sachin-pandit.jpg" alt="Sachin Pandit, PhD" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; background: #FAFAFA">
+            <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid #111111">
+              <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #004B59">Associate Vice President, Operations</p>
+              <h3 style="margin: 8px 0 0; font-size: 20px; line-height: 1.3; font-weight: 600; letter-spacing: -0.01em; color: #111111">Sachin Pandit, PhD</h3>
+              <p style="margin: 10px 0 0; font-size: 15px; line-height: 1.55; color: #404040">Managing technical operations, optimizing process workflows, and ensuring seamless execution of technical projects.</p>
+            </div>
+          </article>
+          <article>
+            <img src="assets/team-yide-chang.jpg" alt="Yide Chang, PhD" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; background: #FAFAFA">
+            <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid #111111">
+              <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #004B59">Director of Analytical Services</p>
+              <h3 style="margin: 8px 0 0; font-size: 20px; line-height: 1.3; font-weight: 600; letter-spacing: -0.01em; color: #111111">Yide Chang, PhD</h3>
+              <p style="margin: 10px 0 0; font-size: 15px; line-height: 1.55; color: #404040">Overseeing analytical operations, ensuring quality control, and leading the development of robust analytical methods.</p>
+            </div>
+          </article>
+          <article>
+            <img src="assets/team-murugu-swaminathan.jpg" alt="Murugu Swaminathan, MS, MBA" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; background: #FAFAFA">
+            <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid #111111">
+              <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #004B59">Site Quality Head Consultant</p>
+              <h3 style="margin: 8px 0 0; font-size: 20px; line-height: 1.3; font-weight: 600; letter-spacing: -0.01em; color: #111111">Murugu Swaminathan, MS, MBA</h3>
+              <p style="margin: 10px 0 0; font-size: 15px; line-height: 1.55; color: #404040">Pharmaceutical quality leader with 25+ years across pharma, biotech, and CDMO organizations.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- §07 Facility timeline -->
+    <section class="sec" aria-labelledby="s07-h" style="padding: 112px 0; background: #FAFAFA; border-top: 1px solid #D9E3E7">
+      <div class="wrap" style="max-width: 85rem; margin: 0 auto; padding: 0 40px">
+        <p class="section-pill">Facility</p>
+        <div class="g" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 40px; row-gap: 24px; align-items: end; margin: 40px 0 72px">
+          <h2 id="s07-h" class="h2" style="grid-column: span 7; margin: 0; font-size: 44px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em; color: #111111">Research Triangle Park, NC</h2>
+          <p style="grid-column: 9 / span 4; margin: 0; font-size: 17px; line-height: 1.6; color: #404040">With an experienced team and state-of-the-art facility, we provide responsive, quality-focused development support.</p>
+        </div>
+        <ol class="g t2" style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr))">
+          <li class="cell" style="position: relative; padding: 40px 32px 0 0; border-top: 1px solid #004B59">
+            <span aria-hidden="true" style="position: absolute; top: -6px; left: 0; width: 11px; height: 11px; background: #00B4D7"></span>
+            <p class="num" style="margin: 0; font-size: 48px; line-height: 1; font-weight: 600; letter-spacing: -0.03em; color: #00B4D7">2023</p>
+            <h3 style="margin: 20px 0 0; font-size: 20px; line-height: 1.3; font-weight: 600; color: #111111">SmaBio Labs Founded</h3>
+            <p style="margin: 10px 0 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.6; letter-spacing: 0.04em; text-transform: uppercase; color: #004B59">Apex, NC · 2,000 sq. ft.</p>
+          </li>
+          <li class="cell" style="position: relative; padding: 40px 32px 0 0; border-top: 1px solid #004B59">
+            <span aria-hidden="true" style="position: absolute; top: -6px; left: 0; width: 11px; height: 11px; background: #00B4D7"></span>
+            <p class="num" style="margin: 0; font-size: 48px; line-height: 1; font-weight: 600; letter-spacing: -0.03em; color: #00B4D7">2024</p>
+            <h3 style="margin: 20px 0 0; font-size: 20px; line-height: 1.3; font-weight: 600; color: #111111">Moved to New Facility</h3>
+            <p style="margin: 10px 0 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.6; letter-spacing: 0.04em; text-transform: uppercase; color: #004B59">RTP, NC · 10,000 sq. ft.<br>Early-Phase GMP Manufacturing</p>
+          </li>
+          <li class="cell" style="position: relative; padding: 40px 32px 0 0; border-top: 1px solid #004B59">
+            <span aria-hidden="true" style="position: absolute; top: -6px; left: 0; width: 11px; height: 11px; background: #00B4D7"></span>
+            <p class="num" style="margin: 0; font-size: 48px; line-height: 1; font-weight: 600; letter-spacing: -0.03em; color: #00B4D7">2025</p>
+            <h3 style="margin: 20px 0 0; font-size: 20px; line-height: 1.3; font-weight: 600; color: #111111">FDA-Registered Analytical Lab</h3>
+          </li>
+          <li class="cell" style="position: relative; padding: 40px 0 0; border-top: 1px dashed #004B59">
+            <span aria-hidden="true" style="position: absolute; top: -6px; left: 0; width: 11px; height: 11px; border: 1.5px solid #00B4D7; background: #FAFAFA"></span>
+            <p class="num" style="margin: 0; font-size: 48px; line-height: 1; font-weight: 600; letter-spacing: -0.03em; color: #00B4D7">2026</p>
+            <h3 style="margin: 20px 0 0; font-size: 20px; line-height: 1.3; font-weight: 600; color: #111111">Potential GMP Facility Expansion</h3>
+            <p style="margin: 10px 0 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.6; letter-spacing: 0.04em; text-transform: uppercase; color: #004B59">Research Triangle Park, NC</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Contact band + footer (brand gradient, once) -->
+  <div style="background: linear-gradient(306deg, #002F3C 0%, #004B59 100%); color: #FFFFFF">
+    <section id="contact" class="sec" aria-labelledby="contact-h" style="padding: 112px 0">
+      <div class="wrap" style="max-width: 85rem; margin: 0 auto; padding: 0 40px">
+        <p class="section-pill">Contact Us</p>
+        <div class="g" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 40px; row-gap: 48px; margin-top: 48px">
+          <div style="grid-column: span 5">
+            <h2 id="contact-h" class="h2" style="margin: 0; font-size: 44px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em; color: #FFFFFF">Let's Move Your Program Forward</h2>
+            <p style="margin: 24px 0 0; font-size: 20px; line-height: 1.5; color: #FFFFFF">Get in touch with our team of expert scientists</p>
+            <p style="margin: 12px 0 0; font-size: 17px; line-height: 1.6; color: rgba(255,255,255,0.78)">Tell us about your program, your milestones, and your timeline.</p>
+            <dl style="margin: 48px 0 0; border-top: 1px solid rgba(255,255,255,0.18)">
+              <div style="display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.18)"><dt style="padding-top: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #00D1DA">Phone</dt><dd style="margin: 0; font-size: 17px"><a href="tel:+19197045617" style="color: #FFFFFF; text-decoration: none">+1 (919) 704-5617</a></dd></div>
+              <div style="display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.18)"><dt style="padding-top: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #00D1DA">Email</dt><dd style="margin: 0; font-size: 17px"><a href="mailto:contact@smabiolabs.com" style="color: #FFFFFF; text-decoration: none">contact@smabiolabs.com</a></dd></div>
+              <div style="display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.18)"><dt style="padding-top: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #00D1DA">Address</dt><dd style="margin: 0; font-size: 17px; line-height: 1.5; color: #FFFFFF">104 T.W. Alexander Drive, Building 18, Durham, NC 27713, United States</dd></div>
+            </dl>
+          </div>
+          <div style="grid-column: 7 / span 6">
+            <form class="pad" aria-label="Contact form" style="padding: 40px; border-radius: 10px; background: #FFFFFF; color: #111111">
+              <div style="display: flex; justify-content: space-between; gap: 16px; margin-bottom: 28px; padding-bottom: 16px; border-bottom: 1px solid #D9E3E7; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #004B59"><span>Contact form</span><span style="color: rgba(0,47,60,0.78)">* Required</span></div>
+              <div class="g" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 24px; align-items: end">
+                <div><label for="f-first" style="display: block; margin-bottom: 8px; font-size: 14px; line-height: 1.4; font-weight: 600; color: #111111">First name*</label><input class="fld" id="f-first" name="first_name" type="text" autocomplete="given-name" required="required" style="width: 100%; height: 48px; padding: 0 14px; border: 1px solid #D9E3E7; border-radius: 6px; background: #FFFFFF; color: #111111; font: inherit; font-size: 16px"></div>
+                <div><label for="f-last" style="display: block; margin-bottom: 8px; font-size: 14px; line-height: 1.4; font-weight: 600; color: #111111">Last name*</label><input class="fld" id="f-last" name="last_name" type="text" autocomplete="family-name" required="required" style="width: 100%; height: 48px; padding: 0 14px; border: 1px solid #D9E3E7; border-radius: 6px; background: #FFFFFF; color: #111111; font: inherit; font-size: 16px"></div>
+                <div><label for="f-email" style="display: block; margin-bottom: 8px; font-size: 14px; line-height: 1.4; font-weight: 600; color: #111111">Email*</label><input class="fld" id="f-email" name="email" type="email" autocomplete="email" required="required" style="width: 100%; height: 48px; padding: 0 14px; border: 1px solid #D9E3E7; border-radius: 6px; background: #FFFFFF; color: #111111; font: inherit; font-size: 16px"></div>
+                <div><label for="f-company" style="display: block; margin-bottom: 8px; font-size: 14px; line-height: 1.4; font-weight: 600; color: #111111">Company*</label><input class="fld" id="f-company" name="company" type="text" autocomplete="organization" required="required" style="width: 100%; height: 48px; padding: 0 14px; border: 1px solid #D9E3E7; border-radius: 6px; background: #FFFFFF; color: #111111; font: inherit; font-size: 16px"></div>
+                <div><label for="f-phone" style="display: block; margin-bottom: 8px; font-size: 14px; line-height: 1.4; font-weight: 600; color: #111111">Phone*</label><input class="fld" id="f-phone" name="phone" type="tel" autocomplete="tel" required="required" style="width: 100%; height: 48px; padding: 0 14px; border: 1px solid #D9E3E7; border-radius: 6px; background: #FFFFFF; color: #111111; font: inherit; font-size: 16px"></div>
+                <div><label for="f-country" style="display: block; margin-bottom: 8px; font-size: 14px; line-height: 1.4; font-weight: 600; color: #111111">Country*</label><input class="fld" id="f-country" name="country" type="text" autocomplete="country-name" required="required" style="width: 100%; height: 48px; padding: 0 14px; border: 1px solid #D9E3E7; border-radius: 6px; background: #FFFFFF; color: #111111; font: inherit; font-size: 16px"></div>
+                <div><label for="f-help" style="display: block; margin-bottom: 8px; font-size: 14px; line-height: 1.4; font-weight: 600; color: #111111">How can we help you?*</label><div style="position: relative"><select class="fld" id="f-help" name="help" required="required" style="width: 100%; height: 48px; padding: 0 40px 0 14px; border: 1px solid #D9E3E7; border-radius: 6px; background: #FFFFFF; color: #111111; font: inherit; font-size: 16px; appearance: none; -webkit-appearance: none"><option value="">Select…</option><option>Analytical Services</option><option>Product Development</option><option>Drug Discovery &amp; Process Development</option><option>Stability Storage &amp; Testing</option><option>CTM Manufacturing</option><option>Custom Synthesis</option></select><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#004B59" stroke-width="1.5" aria-hidden="true" style="position: absolute; top: 16px; right: 14px; pointer-events: none"><path d="M4 6l4 4 4-4"></path></svg></div></div>
+                <div><label for="f-area" style="display: block; margin-bottom: 8px; font-size: 14px; line-height: 1.4; font-weight: 600; color: #111111">What is the primary area of interest?*</label><div style="position: relative"><select class="fld" id="f-area" name="area" required="required" style="width: 100%; height: 48px; padding: 0 40px 0 14px; border: 1px solid #D9E3E7; border-radius: 6px; background: #FFFFFF; color: #111111; font: inherit; font-size: 16px; appearance: none; -webkit-appearance: none"><option value="">Select…</option><option>Analytical Services</option><option>Product Development</option><option>Drug Discovery &amp; Process Development</option><option>Stability Storage &amp; Testing</option><option>CTM Manufacturing</option><option>Custom Synthesis</option></select><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#004B59" stroke-width="1.5" aria-hidden="true" style="position: absolute; top: 16px; right: 14px; pointer-events: none"><path d="M4 6l4 4 4-4"></path></svg></div></div>
+                <div style="grid-column: 1 / -1"><label for="f-discuss" style="display: block; margin-bottom: 8px; font-size: 14px; line-height: 1.4; font-weight: 600; color: #111111">What would you like to discuss?*</label><div style="position: relative"><select class="fld" id="f-discuss" name="discuss" required="required" style="width: 100%; height: 48px; padding: 0 40px 0 14px; border: 1px solid #D9E3E7; border-radius: 6px; background: #FFFFFF; color: #111111; font: inherit; font-size: 16px; appearance: none; -webkit-appearance: none"><option value="">Select…</option></select><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#004B59" stroke-width="1.5" aria-hidden="true" style="position: absolute; top: 16px; right: 14px; pointer-events: none"><path d="M4 6l4 4 4-4"></path></svg></div></div>
+                <div style="grid-column: 1 / -1"><label for="f-detail" style="display: block; margin-bottom: 8px; font-size: 14px; line-height: 1.4; font-weight: 600; color: #111111">Provide as much detail as possible about your challenge.*</label><textarea class="fld" id="f-detail" name="detail" rows="5" required="required" style="display: block; width: 100%; height: 136px; padding: 12px 14px; border: 1px solid #D9E3E7; border-radius: 6px; background: #FFFFFF; color: #111111; font: inherit; font-size: 16px; line-height: 1.5; resize: vertical"></textarea></div>
+              </div>
+              <div class="stack" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 28px; padding-top: 24px; border-top: 1px solid #D9E3E7">
+                <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.5; color: rgba(0,47,60,0.78)">We will contact you within 1-2 business day.</p>
+                <button class="btn-p" type="submit" style="display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 28px; border: 0; border-radius: 6px; background: #004964; color: #FFFFFF; font: inherit; font-size: 16px; font-weight: 600; cursor: pointer">Submit <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"></path></svg></button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer style="border-top: 1px solid rgba(255,255,255,0.14)">
+      <div class="wrap" style="max-width: 85rem; margin: 0 auto; padding: 80px 40px 0">
+        <div class="g" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 40px; row-gap: 48px">
+          <div style="grid-column: span 4">
+            <h2 style="margin: 0; font-size: 24px; line-height: 1.25; font-weight: 600; letter-spacing: -0.01em; color: #FFFFFF">Subscribe to our newsletter</h2>
+            <p style="margin: 12px 0 0; font-size: 15px; line-height: 1.55; color: rgba(255,255,255,0.78)">Stay updated with SmaBio Labs events, insights, and innovations. Subscribe to our newsletter for the latest scientific updates.</p>
+            <form aria-label="Newsletter" style="margin-top: 24px">
+              <label for="nl-email" style="display: block; margin-bottom: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #00D1DA">Email*</label>
+              <div style="display: flex; gap: 8px">
+                <input class="fld-d" id="nl-email" name="email" type="email" autocomplete="email" required="required" style="flex: 1; min-width: 0; height: 48px; padding: 0 14px; border: 1px solid rgba(255,255,255,0.28); border-radius: 6px; background: rgba(255,255,255,0.06); color: #FFFFFF; font: inherit; font-size: 16px">
+                <button class="btn-c" type="submit" style="flex: none; height: 48px; padding: 0 20px; border: 0; border-radius: 6px; background: #00B4D7; color: #002F3C; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer">Subscribe</button>
+              </div>
+              <label style="display: flex; align-items: center; gap: 10px; min-height: 44px; margin-top: 8px; font-size: 14px; color: rgba(255,255,255,0.82); cursor: pointer"><input type="checkbox" name="optin" style="width: 18px; height: 18px; margin: 0; accent-color: #00B4D7">Yes, subscribe me to your newsletter.</label>
+            </form>
+          </div>
+          <nav aria-label="Our Company" style="grid-column: 6 / span 2">
+            <p style="margin: 0 0 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #00D1DA">Our Company</p>
+            <ul style="list-style: none; margin: 0; padding: 0; font-size: 15px">
+              <li><a class="fl" href="about.html" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">About Us</a></li>
+              <li><a class="fl" href="services.html" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">Services</a></li>
+              <li><a class="fl" href="product-development.html" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">Product Development</a></li>
+              <li><a class="fl" href="analytical-small-molecules.html" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">Analytical Services - Small Molecules</a></li>
+              <li><a class="fl" href="analytical-biologics.html" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">Analytical Services - Biologics</a></li>
+              <li><a class="fl" href="stability.html" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">Stability Storage and Testing</a></li>
+              <li><a class="fl" href="services.html#custom-synthesis" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">Custom Synthesis</a></li>
+              <li><a class="fl" href="drug-discovery.html" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">Drug Discovery and Process Development</a></li>
+              <li><a class="fl" href="ctm-manufacturing.html" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">CTM Manufacturing</a></li>
+              <li><a class="fl" href="quality-and-facilities.html" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">Quality and Facility</a></li>
+              <li><a class="fl" href="blogs.html" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">Resources</a></li>
+              <li><a class="fl" href="events.html" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">Events</a></li>
+              <li><a class="fl" href="contact.html" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">Contact Us</a></li>
+            </ul>
+          </nav>
+          <nav aria-label="Policy" style="grid-column: 8 / span 2">
+            <p style="margin: 0 0 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #00D1DA">Policy Page</p>
+            <ul style="list-style: none; margin: 0; padding: 0; font-size: 15px">
+              <li><a class="fl" href="#" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">Terms of Use</a></li>
+              <li><a class="fl" href="#" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">Privacy Policy</a></li>
+            </ul>
+          </nav>
+          <div style="grid-column: 10 / span 3">
+            <p style="margin: 0 0 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #00D1DA">Contact</p>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55"><a class="fl" href="mailto:contact@smabiolabs.com" style="display: inline-flex; align-items: center; min-height: 40px; color: rgba(255,255,255,0.82); text-decoration: none">contact@smabiolabs.com</a></p>
+            <address style="margin: 4px 0 0; font-style: normal; font-size: 15px; line-height: 1.55; color: rgba(255,255,255,0.82)">104 T.W. Alexander Drive, Building 18, Durham, NC 27713, United States</address>
+            <a class="fl" href="https://www.linkedin.com/company/smabiolabs" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin-top: 12px; color: rgba(255,255,255,0.82); font-size: 15px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M8 10v7M8 7v.01M12 17v-7M12 13a3 3 0 0 1 6 0v4"></path></svg>LinkedIn</a>
+          </div>
+        </div>
+        <div class="stack" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 72px; padding: 24px 0 32px; border-top: 1px solid rgba(255,255,255,0.14)">
+          <a href="index.html" style="display: block"><img src="assets/logo-white.png" alt="SmaBio Labs — home" style="display: block; height: 40px; width: auto"></a>
+          <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.04em; color: rgba(255,255,255,0.72)">© 2026 by SmaBio Labs.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+</div>
+</template>
+<script id="dc-logic" type="text/plain" data-props='{"$preview":{"width":1440,"height":10400}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const slides = [
+      {
+        quote: "We partnered with Smabiolabs for a 6-month product development project, and the experience exceeded our expectations. Their team was diligent in reviewing existing patents and trademarks, ensuring that our innovation was on solid ground. They stayed on top of timelines, maintained excellent communication, and provided timely updates throughout the entire project lifecycle. The professionalism, thoroughness, and reliability they brought to the table made them a truly valuable partner in this journey.",
+        name: "Harshul Gupta",
+        role: "Chief Executive Officer",
+        initials: "HG"
+      },
+      {
+        quote: "I have had the privilege of working with SmaBio Labs for more than 9 months. I find their management and team of scientists to be exemplary, creative and thorough. Their collaborative approach to development, including engagement with our team, has helped them to achieve results within the contracted time period. We have had a wonderful professional experience and we could not have chosen a better team to help us develop our products.",
+        name: "Eleanor Reid",
+        role: "Chief Executive Officer",
+        initials: "ER"
+      },
+      { placeholder: true, slot: "Testimonial slot 3 — add client quote" },
+      { placeholder: true, slot: "Testimonial slot 4 — add client quote" }
+    ];
+    const n = slides.length;
+    const i = (this.state && this.state.i) || 0;
+    const s = slides[i];
+    const pad = (k) => (k < 10 ? "0" : "") + k;
+    return {
+      cur: {
+        quote: s.quote || "",
+        name: s.name || "",
+        role: s.role || "",
+        initials: s.initials || "",
+        slot: s.slot || "",
+        real: !s.placeholder,
+        ph: !!s.placeholder
+      },
+      counter: pad(i + 1),
+      total: pad(n),
+      prev: () => this.setState({ i: (i - 1 + n) % n }),
+      next: () => this.setState({ i: (i + 1) % n }),
+      dots: slides.map((x, k) => ({
+        on: k === i,
+        off: k !== i,
+        label: "Show testimonial " + (k + 1),
+        pick: () => this.setState({ i: k })
+      }))
+    };
+  }
+}
+</script>
+<script src="assets/dc-lite.js"></script>
+<script>document.addEventListener('submit',function(e){e.preventDefault();});</script>
+<script>
+const homeFold = document.querySelector('.home-fold');
+function sizeHomeFold() {
+  const top = homeFold.getBoundingClientRect().top + window.scrollY;
+  homeFold.style.setProperty('--home-fold-top', top + 'px');
+}
+sizeHomeFold();
+window.addEventListener('resize', sizeHomeFold);
+new ResizeObserver(sizeHomeFold).observe(document.querySelector('header'));
+</script>
+</body>
+</html>
